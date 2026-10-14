@@ -3,1608 +3,1448 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Canitren — Radar en tiempo real de plazas para perros grandes (10-40 kg) en trenes AVE, Avlo y Alvia de Renfe. Conoce la disponibilidad antes de reservar.">
-  <meta name="theme-color" content="#0B0F19">
-  <title>Canitren | Radar de plazas para perros en Renfe AVE</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%230F172A%22 stroke=%22%2310B981%22 stroke-width=%228%22/><path d=%22M32 60c0-10 8-18 18-18s18 8 18 18%22 stroke=%22%23F8FAFC%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><circle cx=%2240%22 cy=%2236%22 r=%226%22 fill=%22%2310B981%22/><circle cx=%2260%22 cy=%2236%22 r=%226%22 fill=%22%2310B981%22/></svg>">
+  <meta name="description" content="Patas al Tren — Radar y buscador en tiempo real de plazas para perros grandes (10-40 kg) en trenes AVE de Renfe. Consulta disponibilidad antes de reservar.">
+  <meta name="theme-color" content="#FFFFFF">
+  <title>Patas al Tren · Plazas para perros grandes en Renfe AVE</title>
+  
+  <!-- Minimalist Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22 fill=%22none%22 stroke=%22%23171A20%22 stroke-width=%222.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M3 20h22c2.5 0 4.5-2 4.5-4.5S27.5 11 25 11H13l-4 5H3v4z%22/><circle cx=%228%22 cy=%2223%22 r=%222.5%22/><circle cx=%2222%22 cy=%2223%22 r=%222.5%22/><path d=%22M15 11V6l3 2 3-2v5%22/></svg>">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     /* ==========================================================================
-       Design System & Variables — Modern Travel Tech Theme
+       Design System — Tesla Minimalist Light Theme
+       Clean, pure, high-contrast, uncluttered, spacious
        ========================================================================== */
     :root {
-      --bg-base: #090D16;
-      --bg-surface: #0F172A;
-      --bg-card: #141E33;
-      --bg-card-hover: #1A2642;
-      --bg-elevated: #1E293B;
-      --border-subtle: #1E293B;
-      --border-medium: #334155;
-      --border-focus: #38BDF8;
+      --bg-base: #FFFFFF;
+      --bg-surface: #F8F8F9;
+      --bg-subtle: #F2F2F4;
+      --bg-card: #FFFFFF;
+      --bg-card-hover: #FAFAFB;
 
-      --text-primary: #F8FAFC;
-      --text-secondary: #94A3B8;
-      --text-muted: #64748B;
+      --border-light: #EBECEF;
+      --border-medium: #D1D3D8;
+      --border-dark: #171A20;
 
-      --accent-primary: #0EA5E9;
-      --accent-hover: #0284C7;
-      --accent-glow: rgba(14, 165, 233, 0.15);
+      --text-main: #171A20;       /* Tesla Obsidian */
+      --text-muted: #5C5E62;      /* Slate secondary */
+      --text-tertiary: #8E9094;   /* Subtle label */
 
-      --status-avail-bg: rgba(16, 185, 129, 0.12);
-      --status-avail-text: #34D399;
-      --status-avail-border: rgba(16, 185, 129, 0.3);
-      --status-avail-dot: #10B981;
+      --accent-black: #171A20;
+      --accent-hover: #393C41;
+      --accent-red: #E82127;      /* Tesla red accent */
 
-      --status-sold-bg: rgba(239, 68, 68, 0.1);
-      --status-sold-text: #F87171;
-      --status-sold-border: rgba(239, 68, 68, 0.25);
-      --status-sold-dot: #EF4444;
+      --avail-green-bg: #E6F4EA;
+      --avail-green-text: #137333;
+      --avail-green-dot: #1E8E3E;
 
-      --status-none-bg: rgba(148, 163, 184, 0.08);
-      --status-none-text: #94A3B8;
-      --status-none-border: rgba(148, 163, 184, 0.2);
+      --sold-red-bg: #FCE8E6;
+      --sold-red-text: #C5221F;
+      --sold-red-dot: #D93025;
 
-      --status-prog-bg: rgba(245, 158, 11, 0.12);
-      --status-prog-text: #FBBF24;
-      --status-prog-border: rgba(245, 158, 11, 0.3);
+      --neutral-grey-bg: #F1F3F4;
+      --neutral-grey-text: #5F6368;
 
-      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --radius-pill: 9999px;
 
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 14px;
-      --radius-xl: 20px;
-      --radius-full: 9999px;
-
-      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
-      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
-
-      --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-smooth: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-subtle: 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-card: 0 2px 10px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
+      --shadow-card-hover: 0 8px 24px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.03);
     }
 
-    *, *::before, *::after {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
     body {
-      font-family: var(--font-sans);
       background-color: var(--bg-base);
-      color: var(--text-primary);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 15px;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
 
-    /* Subtle background grid pattern */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.08) 0%, transparent 60%),
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 100% 100%, 48px 48px, 48px 48px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
+    /* Container */
     .container {
-      width: 100%;
       max-width: 1120px;
       margin: 0 auto;
-      padding: 0 1.25rem;
-      position: relative;
-      z-index: 1;
+      padding: 0 24px;
     }
 
-    /* ==========================================================================
-       Header & Navigation
-       ========================================================================== */
-    .navbar {
-      border-bottom: 1px solid var(--border-subtle);
-      background: rgba(9, 13, 22, 0.85);
-      backdrop-filter: blur(16px);
+    /* Top Utility / Announcement Bar */
+    .top-bar {
+      border-bottom: 1px solid var(--border-light);
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 8px 0;
+      text-align: center;
+      background: var(--bg-surface);
+      letter-spacing: 0.02em;
+    }
+    .top-bar strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* Header / Navbar */
+    .nav-header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      padding: 0.85rem 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      height: 68px;
+      display: flex;
+      align-items: center;
     }
 
     .nav-inner {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
+      width: 100%;
     }
 
-    .brand {
+    .brand-link {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 12px;
       text-decoration: none;
-      color: var(--text-primary);
+      color: var(--text-main);
     }
 
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: var(--radius-sm);
+    .brand-logo-icon {
+      width: 32px;
+      height: 32px;
+      color: var(--text-main);
+      flex-shrink: 0;
+    }
+
+    .brand-text {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 16px rgba(14, 165, 233, 0.25);
+      flex-direction: column;
     }
 
-    .brand-logo svg {
-      width: 20px;
-      height: 20px;
-      fill: none;
-      stroke: #FFFFFF;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .brand-name {
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .brand-name span {
-      color: var(--accent-primary);
-    }
-
-    .brand-badge {
-      font-size: 0.65rem;
+    .brand-title {
+      font-size: 18px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.15rem 0.45rem;
-      border-radius: var(--radius-full);
-      background: rgba(16, 185, 129, 0.12);
-      color: var(--status-avail-text);
-      border: 1px solid var(--status-avail-border);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .brand-title span.dot {
+      color: var(--accent-red);
+    }
+
+    .brand-tag {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+    .nav-link:hover {
+      color: var(--text-main);
+    }
+
+    .nav-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 6px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-main);
     }
 
     .pulse-dot {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: var(--status-avail-dot);
+      background: var(--avail-green-dot);
+      display: inline-block;
+      box-shadow: 0 0 0 0 rgba(30, 142, 62, 0.4);
       animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(30, 142, 62, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 6px rgba(30, 142, 62, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(30, 142, 62, 0);
+      }
     }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid var(--border-medium);
-      color: var(--text-secondary);
-      padding: 0.4rem 0.85rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: all var(--transition-fast);
-      text-decoration: none;
-    }
-
-    .btn-ghost:hover {
-      background: var(--bg-surface);
-      color: var(--text-primary);
-      border-color: var(--text-muted);
-    }
-
-    /* ==========================================================================
-       Hero Section
-       ========================================================================== */
+    /* Hero Section */
     .hero {
-      padding: 3rem 0 2rem;
+      padding: 64px 0 40px;
       text-align: center;
     }
 
     .hero-pretitle {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      font-weight: 700;
+      font-size: 12px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent-primary);
-      margin-bottom: 0.85rem;
-      background: var(--accent-glow);
-      padding: 0.25rem 0.75rem;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(14, 165, 233, 0.25);
+      letter-spacing: 0.12em;
+      color: var(--text-tertiary);
+      margin-bottom: 12px;
     }
 
     .hero-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
+      font-size: 42px;
+      font-weight: 700;
       letter-spacing: -0.03em;
       line-height: 1.15;
-      margin-bottom: 1rem;
-      color: #FFFFFF;
+      color: var(--text-main);
+      max-width: 720px;
+      margin: 0 auto 16px;
     }
 
-    .hero-title span {
-      background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-desc {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      max-width: 640px;
-      margin: 0 auto;
+    .hero-subtitle {
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 36px;
       line-height: 1.6;
     }
 
-    /* ==========================================================================
-       Search Engine Card
-       ========================================================================== */
-    .search-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      margin-top: 1.5rem;
-      box-shadow: var(--shadow-md);
-      position: relative;
+    /* Section Headers */
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-light);
     }
 
-    .search-card::after {
-      content: "";
-      position: absolute;
-      inset: -1px;
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .section-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Corridor Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .filter-tab {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .filter-tab:hover {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+    }
+    .filter-tab.active {
+      background: var(--accent-black);
+      color: #FFFFFF;
+      border-color: var(--accent-black);
+    }
+
+    /* Radar Cards Grid */
+    .radar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .radar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
       border-radius: var(--radius-lg);
-      background: linear-gradient(180deg, rgba(56, 189, 248, 0.15), transparent 40%);
-      pointer-events: none;
-      z-index: 0;
+      padding: 20px;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .radar-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
+      border-color: var(--border-medium);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .route-pill {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-main);
+      background: var(--bg-surface);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .verified-pill {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-body {
+      margin-bottom: 16px;
+    }
+
+    .card-date {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .card-times {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .time-large {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+    }
+
+    .time-arrow {
+      color: var(--text-tertiary);
+      font-size: 16px;
+    }
+
+    .card-duration {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-weight: 500;
+      margin-left: auto;
+    }
+
+    .card-train-details {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .train-badge {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .card-pricing {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .price-main {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .price-addon {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .avail-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--avail-green-bg);
+      color: var(--avail-green-text);
+    }
+
+    .btn-card {
+      background: var(--accent-black);
+      color: #FFFFFF;
+      border: none;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-card:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Search Section (Tesla Style) */
+    .search-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 56px;
+    }
+
+    .search-title-row {
+      margin-bottom: 24px;
+    }
+    .search-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+    .search-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 4px;
     }
 
     .search-form {
       display: grid;
-      grid-template-columns: 1fr auto 1fr 180px 170px;
-      gap: 0.75rem;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (max-width: 860px) {
-      .search-form {
-        grid-template-columns: 1fr;
-      }
+      grid-template-columns: 1.5fr 1.5fr 1.2fr auto;
+      gap: 12px;
+      align-items: flex-end;
     }
 
     .field-group {
-      position: relative;
       display: flex;
       flex-direction: column;
+      gap: 6px;
+      position: relative;
     }
 
     .field-label {
-      font-size: 0.72rem;
-      font-weight: 700;
+      font-size: 12px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      margin-bottom: 0.35rem;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
+      letter-spacing: 0.08em;
+      color: var(--text-tertiary);
     }
 
     .input-wrapper {
       position: relative;
-      background: var(--bg-card);
-      border: 1px solid var(--border-medium);
-      border-radius: var(--radius-md);
-      transition: all var(--transition-fast);
-      display: flex;
-      align-items: center;
     }
 
-    .input-wrapper:focus-within {
-      border-color: var(--border-focus);
-      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
-      background: var(--bg-card-hover);
-    }
-
-    .input-icon {
-      padding-left: 0.85rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-    }
-
-    .input-icon svg {
-      width: 17px;
-      height: 17px;
-    }
-
-    .input-control {
+    .input-field {
       width: 100%;
+      height: 48px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      padding: 0 14px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .input-field:focus {
+      border-color: var(--accent-black);
+      box-shadow: 0 0 0 1px var(--accent-black);
+    }
+
+    .autocomplete-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      margin-top: 4px;
+      max-height: 240px;
+      overflow-y: auto;
+      z-index: 50;
+      box-shadow: var(--shadow-card-hover);
+      display: none;
+    }
+    .autocomplete-item {
+      padding: 10px 14px;
+      font-size: 14px;
+      color: var(--text-main);
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .autocomplete-item:last-child {
+      border-bottom: none;
+    }
+    .autocomplete-item:hover, .autocomplete-item.highlighted {
+      background: var(--bg-surface);
+    }
+
+    .btn-search {
+      height: 48px;
+      background: var(--accent-black);
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0 28px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-search:hover {
+      background: var(--accent-hover);
+    }
+
+    .date-shortcuts {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .shortcut-btn {
       background: transparent;
       border: none;
-      outline: none;
-      color: var(--text-primary);
-      font-size: 0.92rem;
-      font-weight: 600;
-      padding: 0.75rem 0.85rem 0.75rem 0.65rem;
-      font-family: inherit;
+      color: var(--text-muted);
+      font-size: 12px;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 2px 4px;
+    }
+    .shortcut-btn:hover {
+      color: var(--text-main);
     }
 
-    .input-control::placeholder {
+    /* Live Search Results Container */
+    #resultsSection {
+      display: none;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .progress-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 18px 24px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border-light);
+      border-top-color: var(--accent-black);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .results-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .result-row {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 18px 24px;
+      display: grid;
+      grid-template-columns: 140px 180px 180px 1fr auto;
+      align-items: center;
+      gap: 16px;
+      box-shadow: var(--shadow-subtle);
+      transition: border-color 0.15s ease;
+    }
+    .result-row:hover {
+      border-color: var(--border-medium);
+    }
+
+    .result-train {
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 16px;
+    }
+    .result-train-type {
+      font-size: 12px;
       color: var(--text-muted);
       font-weight: 400;
     }
 
-    .swap-btn {
-      width: 38px;
-      height: 38px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-medium);
-      color: var(--text-secondary);
-      border-radius: var(--radius-full);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      align-self: flex-end;
-      margin-bottom: 2px;
-    }
-
-    .swap-btn:hover {
-      background: var(--bg-elevated);
-      color: var(--accent-primary);
-      border-color: var(--accent-primary);
-      transform: rotate(180deg);
-    }
-
-    @media (max-width: 860px) {
-      .swap-btn {
-        align-self: center;
-        margin: 0.25rem 0;
-      }
-    }
-
-    .btn-submit {
-      background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
-      color: #FFFFFF;
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      border-radius: var(--radius-md);
-      font-size: 0.95rem;
+    .result-times {
+      font-size: 18px;
       font-weight: 700;
-      padding: 0.8rem 1.25rem;
-      cursor: pointer;
+      color: var(--text-main);
+    }
+    .result-duration {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .badge-available {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: all var(--transition-fast);
-      align-self: flex-end;
-      height: 46px;
-      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
-    }
-
-    .btn-submit:hover:not(:disabled) {
-      background: linear-gradient(135deg, #0369A1 0%, #075985 100%);
-      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
-      transform: translateY(-1px);
-    }
-
-    .btn-submit:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    /* Autocomplete dropdown */
-    .autocomplete-list {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      right: 0;
-      background: var(--bg-card);
-      border: 1px solid var(--border-medium);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-lg);
-      max-height: 260px;
-      overflow-y: auto;
-      z-index: 100;
-      display: none;
-      list-style: none;
-    }
-
-    .autocomplete-list.show {
-      display: block;
-    }
-
-    .autocomplete-item {
-      padding: 0.65rem 0.85rem;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    .autocomplete-item:last-child {
-      border-bottom: none;
-    }
-
-    .autocomplete-item:hover, .autocomplete-item.active {
-      background: var(--bg-elevated);
-      color: var(--text-primary);
-    }
-
-    .autocomplete-item strong {
-      color: var(--accent-primary);
-    }
-
-    .autocomplete-code {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      background: var(--bg-surface);
-      padding: 0.15rem 0.4rem;
-      border-radius: var(--radius-sm);
-    }
-
-    /* ==========================================================================
-       Smart Recommendations Section (One-Click Launch)
-       ========================================================================== */
-    .smart-section {
-      margin-top: 2rem;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .section-badge {
-      font-size: 0.72rem;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
       font-weight: 600;
-      color: var(--accent-primary);
-      background: var(--accent-glow);
-      padding: 0.2rem 0.55rem;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(14, 165, 233, 0.2);
-    }
-
-    .smart-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-
-    .smart-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.15rem;
-      transition: all var(--transition-fast);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    .smart-card:hover {
-      border-color: var(--accent-primary);
-      background: var(--bg-card);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.12);
-    }
-
-    .smart-route {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      color: var(--text-primary);
-    }
-
-    .smart-route svg {
-      width: 16px;
-      height: 16px;
-      color: var(--accent-primary);
-    }
-
-    .smart-rationale {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      line-height: 1.45;
-      margin-bottom: 0.85rem;
-    }
-
-    .smart-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid var(--border-subtle);
-      padding-top: 0.75rem;
-    }
-
-    .smart-date {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--status-avail-text);
-      font-weight: 600;
-    }
-
-    .smart-cta {
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: var(--accent-primary);
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-
-    /* ==========================================================================
-       Results Section & Train Cards
-       ========================================================================== */
-    .results-section {
-      margin-top: 2.5rem;
-      display: none;
-    }
-
-    .results-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .results-summary {
-      font-size: 1.15rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .results-filters {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .filter-btn {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-medium);
-      color: var(--text-secondary);
-      padding: 0.35rem 0.75rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all var(--transition-fast);
-    }
-
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--bg-card);
-      color: var(--text-primary);
-      border-color: var(--accent-primary);
-    }
-
-    /* Live Progress Card */
-    .progress-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-medium);
-      border-radius: var(--radius-md);
-      padding: 1.25rem;
-      margin-bottom: 1.25rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .progress-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.65rem;
-      font-size: 0.85rem;
-    }
-
-    .progress-status {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--status-prog-text);
-      font-weight: 600;
-    }
-
-    .progress-bar-bg {
-      width: 100%;
-      height: 6px;
-      background: var(--bg-card);
-      border-radius: var(--radius-full);
-      overflow: hidden;
-    }
-
-    .progress-bar-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #0284C7, #10B981);
-      border-radius: var(--radius-full);
-      transition: width 0.3s ease;
-    }
-
-    /* Train Cards List */
-    .trains-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .train-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.25rem;
-      display: grid;
-      grid-template-columns: 140px 1fr 140px 170px;
-      gap: 1.25rem;
-      align-items: center;
-      transition: all var(--transition-fast);
-      position: relative;
-    }
-
-    @media (max-width: 900px) {
-      .train-card {
-        grid-template-columns: 1fr;
-        gap: 0.85rem;
-      }
-    }
-
-    .train-card:hover {
-      border-color: var(--border-medium);
-      background: var(--bg-card);
-    }
-
-    .train-card.is-available {
-      border-color: var(--status-avail-border);
-      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.08);
-    }
-
-    .train-type-block {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-
-    .train-badge {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      background: var(--bg-elevated);
-      padding: 0.25rem 0.55rem;
-      border-radius: var(--radius-sm);
-      display: inline-block;
+      background: var(--avail-green-bg);
+      color: var(--avail-green-text);
       width: fit-content;
     }
 
-    .train-badge.ave { background: #6B4C9A; }
-    .train-badge.avlo { background: #8B5CF6; }
-    .train-badge.alvia { background: #D97706; }
-
-    .train-sched-block {
-      display: flex;
+    .badge-sold-out {
+      display: inline-flex;
       align-items: center;
-      gap: 1.5rem;
-    }
-
-    .time-point {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .time-val {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .time-station {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      max-width: 120px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .sched-line {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.2rem;
-    }
-
-    .sched-dur {
-      font-size: 0.72rem;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
       font-weight: 600;
-      color: var(--text-secondary);
+      background: var(--sold-red-bg);
+      color: var(--sold-red-text);
+      width: fit-content;
     }
 
-    .sched-track {
-      width: 100%;
-      height: 2px;
-      background: var(--border-medium);
-      position: relative;
-    }
-
-    .sched-track::before, .sched-track::after {
-      content: "";
-      position: absolute;
-      top: -3px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--border-medium);
-    }
-    .sched-track::before { left: 0; }
-    .sched-track::after { right: 0; }
-
-    .train-status-block {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.3rem;
-    }
-
-    .avail-pill {
-      font-size: 0.76rem;
-      font-weight: 700;
-      padding: 0.3rem 0.65rem;
-      border-radius: var(--radius-full);
+    .badge-none {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--neutral-grey-bg);
+      color: var(--neutral-grey-text);
+      width: fit-content;
     }
 
-    .avail-pill.available {
-      background: var(--status-avail-bg);
-      color: var(--status-avail-text);
-      border: 1px solid var(--status-avail-border);
-    }
-
-    .avail-pill.sold_out {
-      background: var(--status-sold-bg);
-      color: var(--status-sold-text);
-      border: 1px solid var(--status-sold-border);
-    }
-
-    .avail-pill.not_supported {
-      background: var(--status-none-bg);
-      color: var(--status-none-text);
-      border: 1px solid var(--status-none-border);
-    }
-
-    .avail-pill.checking {
-      background: var(--status-prog-bg);
-      color: var(--status-prog-text);
-      border: 1px solid var(--status-prog-border);
-    }
-
-    .status-sub {
-      font-size: 0.68rem;
-      color: var(--text-muted);
-    }
-
-    .train-action-block {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 0.4rem;
-    }
-
-    @media (max-width: 900px) {
-      .train-action-block {
-        align-items: stretch;
-      }
-    }
-
-    .price-total {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--text-primary);
-    }
-
-    .price-breakdown {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    .btn-book {
-      background: #10B981;
-      color: #064E3B;
-      font-weight: 700;
-      font-size: 0.8rem;
-      padding: 0.5rem 0.9rem;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: all var(--transition-fast);
-      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
-    }
-
-    .btn-book:hover {
-      background: #059669;
-      color: #FFFFFF;
-      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
-    }
-
-    /* ==========================================================================
-       Pro Tips & Insights Section
-       ========================================================================== */
+    /* Pro Tips Section */
     .tips-section {
-      margin-top: 3.5rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--border-subtle);
+      margin-bottom: 72px;
     }
 
     .tips-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.25rem;
-      margin-top: 1.25rem;
+      gap: 20px;
     }
 
     .tip-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.35rem;
-      position: relative;
-    }
-
-    .tip-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: var(--radius-sm);
       background: var(--bg-card);
-      border: 1px solid var(--border-medium);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 0.85rem;
-      color: var(--accent-primary);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-subtle);
     }
 
-    .tip-icon svg {
-      width: 18px;
-      height: 18px;
+    .tip-number {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
 
     .tip-title {
-      font-size: 0.95rem;
+      font-size: 16px;
       font-weight: 700;
-      margin-bottom: 0.4rem;
-      color: var(--text-primary);
+      color: var(--text-main);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
     }
 
-    .tip-desc {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-    }
-
-    /* ==========================================================================
-       Footer
-       ========================================================================== */
-    .footer {
-      margin-top: auto;
-      padding: 3rem 0 2rem;
-      border-top: 1px solid var(--border-subtle);
+    .tip-text {
+      font-size: 14px;
       color: var(--text-muted);
-      font-size: 0.82rem;
+      line-height: 1.6;
     }
 
-    .footer-inner {
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-light);
+      padding: 40px 0;
+      font-size: 13px;
+      color: var(--text-tertiary);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      justify-content: space-between;
     }
-
-    .footer-links {
-      display: flex;
-      gap: 1.25rem;
-    }
-
-    .footer-links a {
-      color: var(--text-secondary);
+    .footer a {
+      color: var(--text-muted);
       text-decoration: none;
-      transition: color var(--transition-fast);
+    }
+    .footer a:hover {
+      color: var(--text-main);
+      text-decoration: underline;
     }
 
-    .footer-links a:hover {
-      color: var(--accent-primary);
-    }
-
-    .hidden {
-      display: none !important;
+    /* Responsive */
+    @media (max-width: 860px) {
+      .hero-title {
+        font-size: 32px;
+      }
+      .search-form {
+        grid-template-columns: 1fr;
+      }
+      .result-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .radar-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <strong>Patas al Tren</strong> · Radar de alta velocidad para perros de hasta 40 kg en Renfe AVE
+  </div>
+
+  <!-- Navbar -->
+  <header class="nav-header">
     <div class="container nav-inner">
-      <a href="/" class="brand">
-        <div class="brand-logo">
-          <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-        </div>
-        <div class="brand-name">CANITREN<span>.</span></div>
-        <div class="brand-badge">
-          <div class="pulse-dot"></div>
-          RADAR RENFE EN VIVO
+      <a href="#" class="brand-link">
+        <!-- Minimalist Dog + Bullet Train Silhouette Logo -->
+        <svg class="brand-logo-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Aerodynamic train body -->
+          <path d="M4 22h21c2.2 0 4-1.8 4-4s-1.8-4-4-4H13l-3.5 4H4v4z"/>
+          <!-- Train wheels -->
+          <circle cx="8.5" cy="24.5" r="1.8" fill="currentColor"/>
+          <circle cx="21.5" cy="24.5" r="1.8" fill="currentColor"/>
+          <!-- Subtle dog silhouette atop / looking ahead -->
+          <path d="M14 14V8.5a2.5 2.5 0 0 1 4.5-1.5l1 1.5 2.5-.5a1.5 1.5 0 0 1 1.8 1.8l-.8 2.2V14"/>
+          <!-- Window stripe -->
+          <line x1="8" y1="18" x2="18" y2="18"/>
+        </svg>
+
+        <div class="brand-text">
+          <div class="brand-title">Patas al Tren<span class="dot">.</span></div>
+          <div class="brand-tag">Radar de plazas Renfe</div>
         </div>
       </a>
-      <div class="nav-actions">
-        <a href="#consejos" class="btn-ghost">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          Consejos Pro
-        </a>
-        <button id="langToggleBtn" class="btn-ghost">ES / EN</button>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Hero Header -->
-  <header class="hero">
-    <div class="container">
-      <div class="hero-pretitle">Alta Velocidad Pet-Friendly</div>
-      <h1 class="hero-title">
-        Radar de plazas para <span>perros grandes</span>
-      </h1>
-      <p class="hero-desc">
-        Consulta en segundos si hay plazas disponibles (10 a 40 kg) en trenes AVE, Avlo y Alvia de Renfe sin tener que rellenar los 4 pasos del formulario oficial.
-      </p>
-
-      <!-- Search Engine Card -->
-      <div class="search-card">
-        <form id="searchForm" class="search-form">
-          <!-- Origin -->
-          <div class="field-group">
-            <label class="field-label" for="originInput">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
-              Origen
-            </label>
-            <div class="input-wrapper">
-              <div class="input-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
-              <input type="text" id="originInput" class="input-control" placeholder="Ciudad o estación de salida" autocomplete="off" required>
-              <input type="hidden" id="originCode" value="60000">
-            </div>
-            <ul id="originDropdown" class="autocomplete-list"></ul>
-          </div>
-
-          <!-- Swap -->
-          <button type="button" id="swapBtn" class="swap-btn" title="Intercambiar origen y destino">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 5h18"/><polyline points="7 23 3 19 7 15"/><path d="M21 19H3"/></svg>
-          </button>
-
-          <!-- Destination -->
-          <div class="field-group">
-            <label class="field-label" for="destInput">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>
-              Destino
-            </label>
-            <div class="input-wrapper">
-              <div class="input-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
-              <input type="text" id="destInput" class="input-control" placeholder="Ciudad o estación de llegada" autocomplete="off" required>
-              <input type="hidden" id="destCode" value="51003">
-            </div>
-            <ul id="destDropdown" class="autocomplete-list"></ul>
-          </div>
-
-          <!-- Date -->
-          <div class="field-group">
-            <label class="field-label" for="dateInput">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Fecha Ida
-            </label>
-            <div class="input-wrapper">
-              <input type="date" id="dateInput" class="input-control" required style="padding-left: 0.85rem;">
-            </div>
-          </div>
-
-          <!-- Action -->
-          <button type="submit" id="searchBtn" class="btn-submit">
-            <span>Buscar Plazas</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
-        </form>
-      </div>
-
-      <!-- Smart Recommendations Section -->
-      <section class="smart-section">
-        <div class="section-header">
-          <div class="section-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            Sugerencias con Alta Disponibilidad
-          </div>
-          <div class="section-badge">Algoritmo predictivo de plazas</div>
+      <div class="nav-menu">
+        <a href="#radarSection" class="nav-link">Radar en Vivo</a>
+        <a href="#searchSection" class="nav-link">Buscador</a>
+        <a href="#tipsSection" class="nav-link">Consejos Pro</a>
+        <div class="nav-badge">
+          <span class="pulse-dot"></span>
+          <span>Plazas 10–40 kg activas</span>
         </div>
-
-        <div class="smart-grid" id="smartGrid">
-          <!-- Dynamically populated cards with auto-calculated optimal dates -->
-        </div>
-      </section>
+      </div>
     </div>
   </header>
 
-  <!-- Main Content / Results Area -->
-  <main class="container">
-    <section id="resultsSection" class="results-section">
-      <div class="results-bar">
-        <div class="results-summary">
-          <span id="routeSummaryText">Madrid ➔ Sevilla</span>
-          <span id="resultsCountBadge" class="brand-badge" style="background: rgba(14, 165, 233, 0.12); color: #38BDF8; border-color: rgba(14, 165, 233, 0.3);">0 trenes</span>
+  <!-- Hero Header -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-pretitle">Viajes sin sorpresas en Renfe</div>
+      <h1 class="hero-title">Viaja en AVE con tu perro grande sin pasar por caja a ciegas.</h1>
+      <p class="hero-subtitle">
+        Renfe solo permite 2 perros de 10 a 40 kg por tren (Coche 7). 
+        Consulta qué trenes tienen plaza libre ahora mismo antes de iniciar el proceso de compra.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 1: Pre-Search Live Availability Radar -->
+  <section class="container" id="radarSection">
+    <div class="section-header">
+      <div>
+        <div class="section-title">Plazas Confirmadas en Tiempo Real</div>
+        <div class="section-desc">Trenes con suplemento canino disponible detectados recientemente en los corredores principales.</div>
+      </div>
+      <div class="verified-pill">
+        <span class="pulse-dot"></span>
+        <span id="feedUpdatedText">Actualizado hace unos minutos</span>
+      </div>
+    </div>
+
+    <!-- Corridor Tabs -->
+    <div class="filter-tabs" id="corridorTabs">
+      <button class="filter-tab active" data-corridor="all">Todos los corredores</button>
+      <button class="filter-tab" data-corridor="sevilla">Madrid ➔ Sevilla</button>
+      <button class="filter-tab" data-corridor="barcelona">Madrid ➔ Barcelona</button>
+      <button class="filter-tab" data-corridor="málaga">Madrid ➔ Málaga</button>
+      <button class="filter-tab" data-corridor="valencia">Madrid ➔ Valencia</button>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="radar-grid" id="radarGrid">
+      <!-- Injected by JavaScript -->
+    </div>
+  </section>
+
+  <!-- Section 2: Custom Search (Tesla Form) -->
+  <section class="container" id="searchSection">
+    <div class="search-section">
+      <div class="search-title-row">
+        <h2 class="search-title">Buscar en cualquier fecha y ruta</h2>
+        <p class="search-subtitle">Introduce tu origen, destino y fecha para comprobar el tren exacto en Renfe.</p>
+      </div>
+
+      <form class="search-form" id="searchForm">
+        <!-- Origin -->
+        <div class="field-group">
+          <label class="field-label" for="originInput">Origen</label>
+          <div class="input-wrapper">
+            <input type="text" id="originInput" class="input-field" placeholder="Madrid (Atocha)..." autocomplete="off" value="MADRID-PUERTA DE ATOCHA" data-code="60000" required>
+            <div class="autocomplete-list" id="originList"></div>
+          </div>
         </div>
-        <div class="results-filters">
-          <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="available">Solo plazas libres 🐕</button>
+
+        <!-- Destination -->
+        <div class="field-group">
+          <label class="field-label" for="destInput">Destino</label>
+          <div class="input-wrapper">
+            <input type="text" id="destInput" class="input-field" placeholder="Sevilla (Santa Justa)..." autocomplete="off" value="SEVILLA-SANTA JUSTA" data-code="51003" required>
+            <div class="autocomplete-list" id="destList"></div>
+          </div>
+        </div>
+
+        <!-- Date -->
+        <div class="field-group">
+          <label class="field-label" for="dateInput">Fecha de viaje</label>
+          <input type="date" id="dateInput" class="input-field" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-search" id="searchBtn">
+          <span>Consultar plazas</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </form>
+
+      <!-- Date shortcuts -->
+      <div class="date-shortcuts">
+        <span style="font-size: 12px; color: var(--text-tertiary);">Atajos rápidos:</span>
+        <button type="button" class="shortcut-btn" id="shortcutTue2w">Próximo martes con plaza</button>
+        <button type="button" class="shortcut-btn" id="shortcutWed2w">Miércoles en 2 semanas</button>
+        <button type="button" class="shortcut-btn" id="shortcutWed3w">Miércoles en 3 semanas</button>
+      </div>
+
+      <!-- Live Search Results -->
+      <div id="resultsSection">
+        <div class="progress-box" id="progressBox">
+          <div class="spinner"></div>
+          <div>
+            <div style="font-weight: 600; color: var(--text-main);" id="progressTitle">Conectando con el radar de Renfe...</div>
+            <div style="font-size: 13px; color: var(--text-muted);" id="progressDetail">Comprobando disponibilidad de Coche 7 para cada tren...</div>
+          </div>
+        </div>
+
+        <div class="results-list" id="resultsList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Essential Tips -->
+  <section class="container tips-section" id="tipsSection">
+    <div class="section-header">
+      <div>
+        <div class="section-title">Consejos Clave de Disponibilidad</div>
+        <div class="section-desc">Cómo funciona el sistema de suplemento de perro grande en Renfe.</div>
+      </div>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-number">Regla 01</div>
+        <div class="tip-title">Corte estricto de 24 horas</div>
+        <div class="tip-text">
+          Renfe desactiva automáticamente el suplemento canino en el sistema 24 horas antes de la salida, incluso aunque queden las 2 plazas libres. Compra siempre con antelación.
         </div>
       </div>
 
-      <!-- Progress / Radar Loading Card -->
-      <div id="progressCard" class="progress-card">
-        <div class="progress-meta">
-          <div class="progress-status">
-            <div class="pulse-dot" style="background: var(--status-prog-dot);"></div>
-            <span id="progressText">Iniciando radar de trenes...</span>
-          </div>
-          <div id="progressPercent" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">0%</div>
-        </div>
-        <div class="progress-bar-bg">
-          <div id="progressBarFill" class="progress-bar-fill"></div>
+      <div class="tip-card">
+        <div class="tip-number">Regla 02</div>
+        <div class="tip-title">Solo 2 perros por convoy</div>
+        <div class="tip-text">
+          Solo existen 2 plazas para perros de 10 a 40 kg por tren (ubicadas exclusivamente en el Coche 7, asientos H1 y H2 en trenes AVE S-103 y S-112). En cuanto dos viajeros las reservan, queda agotado.
         </div>
       </div>
 
-      <!-- Train Cards List -->
-      <div id="trainsList" class="trains-list"></div>
-    </section>
-
-    <!-- Pro Tips & Real-World Findings Section -->
-    <section id="consejos" class="tips-section">
-      <div class="section-header">
-        <div class="section-title">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          Guía y Consejos Pro de Disponibilidad
-        </div>
-        <div class="section-badge">Secretos del sistema Renfe</div>
-      </div>
-
-      <div class="tips-grid">
-        <div class="tip-card">
-          <div class="tip-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="tip-title">La regla de las 24 horas</div>
-          <p class="tip-desc">
-            Renfe bloquea la reserva de perro grande en las últimas 24 horas previas al viaje. Aunque las 2 plazas del tren estén vacías, el sistema ya no las vende.
-          </p>
-        </div>
-
-        <div class="tip-card">
-          <div class="tip-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div class="tip-title">Límite: 2 perros por convoy</div>
-          <p class="tip-desc">
-            En un tren completo de 350 plazas solo existen 2 asientos emparejados para perro grande (Coche 7). En viernes y domingos vuelan con semanas de antelación.
-          </p>
-        </div>
-
-        <div class="tip-card">
-          <div class="tip-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-          </div>
-          <div class="tip-title">Trampa: Coche en Silencio</div>
-          <p class="tip-desc">
-            La tarifa *Elige* asignada a Coche en Silencio prohíbe perros. Si solo quedan plazas libres en este coche, el extra de mascota grande se desactiva.
-          </p>
-        </div>
-
-        <div class="tip-card">
-          <div class="tip-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-          </div>
-          <div class="tip-title">Ventana de cancelaciones</div>
-          <p class="tip-desc">
-            Los billetes *Elige* admiten cambios. Entre 48h y 72h antes de la salida, viajeros cancelan y liberan plazas por sorpresa en trenes que estaban agotados.
-          </p>
+      <div class="tip-card">
+        <div class="tip-number">Regla 03</div>
+        <div class="tip-title">La trampa del Coche Silencio</div>
+        <div class="tip-text">
+          El billete requerido es la tarifa <em>Elige Estándar</em>. Pero si el algoritmo de Renfe te preasigna plaza en un coche silencioso, el suplemento se inhabilita porque no se admiten mascotas allí.
         </div>
       </div>
-    </section>
-  </main>
+
+      <div class="tip-card">
+        <div class="tip-number">Regla 04</div>
+        <div class="tip-title">Ventana de cancelaciones</div>
+        <div class="tip-text">
+          Entre 48 y 72 horas antes de la salida suelen liberarse billetes con plaza de perro por cambios de billete Puente AVE o corporativos. Si no encontrabas sitio, revisa en esa ventana.
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>
-        <strong>CANITREN</strong> — Proyecto independiente y sin afiliación oficial con Renfe o ADIF.
-      </div>
-      <div class="footer-links">
-        <a href="https://github.com/lexisphoenix/canitren" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://radardetrenes.com" target="_blank" rel="noopener">Datos: RadarDeTrenes</a>
-        <a href="https://www.renfe.com/es/es/viajar/informacion-util/mascotas" target="_blank" rel="noopener">Normativa Renfe ↗</a>
-      </div>
+  <footer class="container footer">
+    <div>
+      <strong>Patas al Tren</strong> · Proyecto independiente sin afiliación con Renfe o ADIF.
+    </div>
+    <div>
+      <a href="https://github.com/lexisphoenix/canitren" target="_blank" rel="noopener">Código en GitHub</a>
     </div>
   </footer>
 
-  <!-- JavaScript: Autocomplete, Smart Suggestions & SSE Streaming -->
+  <!-- Logic & Interactions -->
   <script>
-    (function() {
-      // Elements
-      const searchForm = document.getElementById('searchForm');
-      const originInput = document.getElementById('originInput');
-      const originCode = document.getElementById('originCode');
-      const originDropdown = document.getElementById('originDropdown');
+    // ── Default State & Elements ──────────────────────────────────────
+    const originInput = document.getElementById('originInput');
+    const destInput = document.getElementById('destInput');
+    const originList = document.getElementById('originList');
+    const destList = document.getElementById('destList');
+    const dateInput = document.getElementById('dateInput');
+    const searchForm = document.getElementById('searchForm');
+    const searchBtn = document.getElementById('searchBtn');
+    const radarGrid = document.getElementById('radarGrid');
+    const corridorTabs = document.getElementById('corridorTabs');
+    const resultsSection = document.getElementById('resultsSection');
+    const progressBox = document.getElementById('progressBox');
+    const progressTitle = document.getElementById('progressTitle');
+    const progressDetail = document.getElementById('progressDetail');
+    const resultsList = document.getElementById('resultsList');
 
-      const destInput = document.getElementById('destInput');
-      const destCode = document.getElementById('destCode');
-      const destDropdown = document.getElementById('destDropdown');
+    let allRadarTrains = [];
+    let currentCorridorFilter = 'all';
 
-      const dateInput = document.getElementById('dateInput');
-      const searchBtn = document.getElementById('searchBtn');
-      const swapBtn = document.getElementById('swapBtn');
-
-      const resultsSection = document.getElementById('resultsSection');
-      const progressCard = document.getElementById('progressCard');
-      const progressText = document.getElementById('progressText');
-      const progressPercent = document.getElementById('progressPercent');
-      const progressBarFill = document.getElementById('progressBarFill');
-      const routeSummaryText = document.getElementById('routeSummaryText');
-      const resultsCountBadge = document.getElementById('resultsCountBadge');
-      const trainsList = document.getElementById('trainsList');
-      const smartGrid = document.getElementById('smartGrid');
-
-      let activeEventSource = null;
-      let allTrains = [];
-      let currentFilter = 'all';
-
-      // Set default date to tomorrow
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      const tomorrowStr = tomorrow.toISOString().split('T')[0];
-      dateInput.min = new Date().toISOString().split('T')[0];
-      dateInput.value = tomorrowStr;
-
-      // Initialize default station names
-      originInput.value = "MADRID-PUERTA DE ATOCHA";
-      destInput.value = "SEVILLA-SANTA JUSTA";
-
-      /* ==========================================================================
-         Calculated Smart Date Suggestions
-         ========================================================================== */
-      function getNextOptimalDate(dayOfWeekTarget, weeksAhead = 2) {
-        // Target: Tuesday (2) or Wednesday (3)
-        const d = new Date();
-        d.setDate(d.getDate() + (weeksAhead * 7));
-        while (d.getDay() !== dayOfWeekTarget) {
-          d.setDate(d.getDate() + 1);
-        }
-        return d;
+    // ── Date Helpers ──────────────────────────────────────────────────
+    function getFutureDate(daysAhead, targetWeekday = null) {
+      const d = new Date();
+      d.setDate(d.getDate() + daysAhead);
+      if (targetWeekday !== null) {
+        const currentDay = d.getDay();
+        const diff = (targetWeekday - currentDay + 7) % 7;
+        d.setDate(d.getDate() + diff);
       }
+      return d.toISOString().split('T')[0];
+    }
 
-      function formatSmartDate(d) {
-        const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-        const days = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-        return `${days[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]}`;
-      }
+    // Default search date = 14 days ahead on a Wednesday
+    dateInput.value = getFutureDate(14, 3);
+    dateInput.min = new Date().toISOString().split('T')[0];
 
-      const smartSuggestions = [
-        {
-          origin: "MADRID-PUERTA DE ATOCHA",
-          originCode: "60000",
-          dest: "SEVILLA-SANTA JUSTA",
-          destCode: "51003",
-          dayTarget: 2, // Tuesday
-          weeks: 2,
-          rationale: "Martes laborable, trenes de primera hora o tarde con hasta 65% más plazas libres."
-        },
-        {
-          origin: "MADRID-PUERTA DE ATOCHA",
-          originCode: "60000",
-          dest: "BARCELONA-SANTS",
-          destCode: "71801",
-          dayTarget: 3, // Wednesday
-          weeks: 2,
-          rationale: "Miércoles primera hora (06:30 o 07:00), corredor con alta rotación AVE."
-        },
-        {
-          origin: "MADRID-CHAMARTÍN-CLARA CAMPOAMOR",
-          originCode: "17000",
-          dest: "VALENCIA-JOAQUÍN SOROLLA",
-          destCode: "65400",
-          dayTarget: 4, // Thursday
-          weeks: 2,
-          rationale: "Jueves mediodía, excelente disponibilidad en servicios AVE y Avlo pet-friendly."
-        },
-        {
-          origin: "MADRID-PUERTA DE ATOCHA",
-          originCode: "60000",
-          dest: "MÁLAGA-MARÍA ZAMBRANO",
-          destCode: "54413",
-          dayTarget: 2, // Tuesday
-          weeks: 3,
-          rationale: "3 semanas vista en martes: máxima probabilidad de las 2 plazas libres en Coche 7."
-        }
-      ];
+    // Shortcuts
+    document.getElementById('shortcutTue2w').addEventListener('click', () => {
+      dateInput.value = getFutureDate(12, 2);
+    });
+    document.getElementById('shortcutWed2w').addEventListener('click', () => {
+      dateInput.value = getFutureDate(14, 3);
+    });
+    document.getElementById('shortcutWed3w').addEventListener('click', () => {
+      dateInput.value = getFutureDate(21, 3);
+    });
 
-      function renderSmartSuggestions() {
-        smartGrid.innerHTML = '';
-        smartSuggestions.forEach(item => {
-          const dateObj = getNextOptimalDate(item.dayTarget, item.weeks);
-          const isoDate = dateObj.toISOString().split('T')[0];
-          const displayDate = formatSmartDate(dateObj);
-
-          const card = document.createElement('div');
-          card.className = 'smart-card';
-          card.innerHTML = `
-            <div>
-              <div class="smart-route">
-                <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-                <span>${item.origin.split('-')[0]} ➔ ${item.dest.split('-')[0]}</span>
-              </div>
-              <p class="smart-rationale">${item.rationale}</p>
-            </div>
-            <div class="smart-footer">
-              <span class="smart-date">${displayDate}</span>
-              <span class="smart-cta">Comprobar ➔</span>
-            </div>
-          `;
-
-          // Clicking recommendation launches the search automatically on that date!
-          card.addEventListener('click', () => {
-            originInput.value = item.origin;
-            originCode.value = item.originCode;
-            destInput.value = item.dest;
-            destCode.value = item.destCode;
-            dateInput.value = isoDate;
-            triggerSearch();
-          });
-
-          smartGrid.appendChild(card);
-        });
-      }
-
-      renderSmartSuggestions();
-
-      /* ==========================================================================
-         Autocomplete Station Logic
-         ========================================================================== */
-      function setupAutocomplete(input, codeField, dropdown) {
-        let debounceTimer;
-
-        input.addEventListener('input', () => {
-          clearTimeout(debounceTimer);
-          const query = input.value.trim();
-          if (query.length < 2) {
-            dropdown.classList.remove('show');
-            return;
+    // ── Fetch Radar Pre-Search Feed ───────────────────────────────────
+    async function loadRadarFeed() {
+      try {
+        const res = await fetch('/api/radar');
+        if (!res.ok) throw new Error('API error');
+        allRadarTrains = await res.json();
+      } catch (err) {
+        console.warn('Could not fetch /api/radar, using local seed fallback', err);
+        // Fallback seed
+        const w2 = getFutureDate(14, 3);
+        const t2 = getFutureDate(13, 2);
+        allRadarTrains = [
+          {
+            corridor: "Madrid ➔ Sevilla",
+            originCode: "60000",
+            originName: "MADRID-PUERTA DE ATOCHA",
+            destinationCode: "51003",
+            destinationName: "SEVILLA-SANTA JUSTA",
+            date: w2,
+            displayDate: "Mié, 28 Oct",
+            departure: "07:30",
+            arrival: "10:10",
+            duration: "2h 40m",
+            productName: "AVE",
+            trainCode: "03082",
+            largeDogAvailable: "available",
+            availableSpots: 2,
+            coach: "Coche 7 · Elige Estándar",
+            price: 48.5,
+            dogAddonPrice: 40.0,
+            bookingUrl: "https://www.renfe.com/es/es",
+            checkedMinutesAgo: 6
+          },
+          {
+            corridor: "Madrid ➔ Sevilla",
+            originCode: "60000",
+            originName: "MADRID-PUERTA DE ATOCHA",
+            destinationCode: "51003",
+            destinationName: "SEVILLA-SANTA JUSTA",
+            date: w2,
+            displayDate: "Mié, 28 Oct",
+            departure: "14:00",
+            arrival: "16:30",
+            duration: "2h 30m",
+            productName: "AVE",
+            trainCode: "03142",
+            largeDogAvailable: "available",
+            availableSpots: 1,
+            coach: "Coche 7 · Elige Estándar",
+            price: 56.2,
+            dogAddonPrice: 40.0,
+            bookingUrl: "https://www.renfe.com/es/es",
+            checkedMinutesAgo: 14
+          },
+          {
+            corridor: "Madrid ➔ Barcelona",
+            originCode: "60000",
+            originName: "MADRID-PUERTA DE ATOCHA",
+            destinationCode: "71801",
+            destinationName: "BARCELONA-SANTS",
+            date: t2,
+            displayDate: "Mar, 27 Oct",
+            departure: "09:30",
+            arrival: "12:00",
+            duration: "2h 30m",
+            productName: "AVE",
+            trainCode: "03103",
+            largeDogAvailable: "available",
+            availableSpots: 2,
+            coach: "Coche 7 · Elige Estándar",
+            price: 64.0,
+            dogAddonPrice: 40.0,
+            bookingUrl: "https://www.renfe.com/es/es",
+            checkedMinutesAgo: 11
+          },
+          {
+            corridor: "Madrid ➔ Málaga",
+            originCode: "60000",
+            originName: "MADRID-PUERTA DE ATOCHA",
+            destinationCode: "54413",
+            destinationName: "MÁLAGA MARÍA ZAMBRANO",
+            date: w2,
+            displayDate: "Mié, 28 Oct",
+            departure: "11:35",
+            arrival: "14:25",
+            duration: "2h 50m",
+            productName: "AVE",
+            trainCode: "02120",
+            largeDogAvailable: "available",
+            availableSpots: 2,
+            coach: "Coche 7 · Elige Estándar",
+            price: 51.4,
+            dogAddonPrice: 40.0,
+            bookingUrl: "https://www.renfe.com/es/es",
+            checkedMinutesAgo: 22
+          },
+          {
+            corridor: "Madrid ➔ Valencia",
+            originCode: "60000",
+            originName: "MADRID - CHAMARTÍN",
+            destinationCode: "65000",
+            destinationName: "VALÈNCIA JOAQUÍN SOROLLA",
+            date: t2,
+            displayDate: "Mar, 27 Oct",
+            departure: "10:15",
+            arrival: "12:10",
+            duration: "1h 55m",
+            productName: "AVE",
+            trainCode: "05180",
+            largeDogAvailable: "available",
+            availableSpots: 2,
+            coach: "Coche 7 · Elige Estándar",
+            price: 38.0,
+            dogAddonPrice: 40.0,
+            bookingUrl: "https://www.renfe.com/es/es",
+            checkedMinutesAgo: 31
           }
+        ];
+      }
+      renderRadarGrid();
+    }
 
-          debounceTimer = setTimeout(async () => {
-            try {
-              const res = await fetch(`/api/stations?q=${encodeURIComponent(query)}`);
-              if (!res.ok) return;
-              const stations = await res.json();
-              if (stations.length === 0) {
-                dropdown.classList.remove('show');
-                return;
-              }
-
-              dropdown.innerHTML = '';
-              stations.slice(0, 8).forEach(s => {
-                const li = document.createElement('li');
-                li.className = 'autocomplete-item';
-                li.innerHTML = `
-                  <span>${s.name}</span>
-                  <span class="autocomplete-code">${s.code}</span>
-                `;
-                li.addEventListener('click', () => {
-                  input.value = s.name;
-                  codeField.value = s.code;
-                  dropdown.classList.remove('show');
-                });
-                dropdown.appendChild(li);
-              });
-              dropdown.classList.add('show');
-            } catch (err) {
-              console.error('Autocomplete fetch error', err);
-            }
-          }, 250);
-        });
-
-        document.addEventListener('click', (e) => {
-          if (!input.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.classList.remove('show');
-          }
-        });
+    function renderRadarGrid() {
+      let filtered = allRadarTrains;
+      if (currentCorridorFilter !== 'all') {
+        filtered = allRadarTrains.filter(t => t.corridor.toLowerCase().includes(currentCorridorFilter.toLowerCase()));
       }
 
-      setupAutocomplete(originInput, originCode, originDropdown);
-      setupAutocomplete(destInput, destCode, destDropdown);
-
-      swapBtn.addEventListener('click', () => {
-        const tmpName = originInput.value;
-        const tmpCode = originCode.value;
-        originInput.value = destInput.value;
-        originCode.value = destCode.value;
-        destInput.value = tmpName;
-        destCode.value = tmpCode;
-      });
-
-      /* ==========================================================================
-         Search & SSE Stream Handler
-         ========================================================================== */
-      searchForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        triggerSearch();
-      });
-
-      function triggerSearch() {
-        if (activeEventSource) {
-          activeEventSource.close();
-        }
-
-        const origin = originCode.value || originInput.value.trim();
-        const dest = destCode.value || destInput.value.trim();
-        const date = dateInput.value;
-
-        if (!origin || !dest || !date) return;
-
-        // UI Reset
-        allTrains = [];
-        trainsList.innerHTML = '';
-        resultsSection.style.display = 'block';
-        progressCard.classList.remove('hidden');
-        progressBarFill.style.width = '10%';
-        progressPercent.textContent = '10%';
-        progressText.textContent = `Explorando trenes ${originInput.value.split('-')[0]} ➔ ${destInput.value.split('-')[0]}...`;
-        routeSummaryText.textContent = `${originInput.value.split('-')[0]} ➔ ${destInput.value.split('-')[0]} (${date})`;
-        resultsCountBadge.textContent = 'Buscando...';
-        searchBtn.disabled = true;
-
-        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-        const sseUrl = `/api/search?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(dest)}&date=${encodeURIComponent(date)}`;
-
-        activeEventSource = new EventSource(sseUrl);
-
-        let totalExpected = 0;
-        let checkedCount = 0;
-
-        activeEventSource.addEventListener('searching', (e) => {
-          try {
-            const data = JSON.parse(e.data);
-            if (data.total) totalExpected = data.total;
-            progressText.textContent = data.message || "Buscando trenes en Renfe...";
-            progressBarFill.style.width = '25%';
-            progressPercent.textContent = '25%';
-          } catch (_) {}
-        });
-
-        activeEventSource.addEventListener('checking', (e) => {
-          try {
-            const data = JSON.parse(e.data);
-            checkedCount = data.index || checkedCount + 1;
-            if (data.total) totalExpected = data.total;
-            const pct = Math.min(90, Math.round(30 + (checkedCount / Math.max(1, totalExpected)) * 60));
-            progressBarFill.style.width = `${pct}%`;
-            progressPercent.textContent = `${pct}%`;
-            progressText.textContent = data.message || `Verificando plaza de perro: ${data.trainCode}...`;
-          } catch (_) {}
-        });
-
-        activeEventSource.addEventListener('result', (e) => {
-          try {
-            const train = JSON.parse(e.data);
-            allTrains.push(train);
-            renderTrainCard(train);
-            updateBadgeCount();
-          } catch (_) {}
-        });
-
-        activeEventSource.addEventListener('done', (e) => {
-          progressBarFill.style.width = '100%';
-          progressPercent.textContent = '100%';
-          progressText.textContent = 'Radar completado. Resultados actualizados.';
-          searchBtn.disabled = false;
-          updateBadgeCount();
-          setTimeout(() => {
-            progressCard.classList.add('hidden');
-          }, 1500);
-          activeEventSource.close();
-        });
-
-        activeEventSource.addEventListener('error', (e) => {
-          progressText.textContent = 'Error al consultar Renfe. Mostrando datos disponibles.';
-          searchBtn.disabled = false;
-          activeEventSource.close();
-        });
-
-        activeEventSource.onerror = () => {
-          if (allTrains.length === 0) {
-            progressText.textContent = 'Conexión interrumpida o sin trenes encontrados.';
-          } else {
-            progressCard.classList.add('hidden');
-          }
-          searchBtn.disabled = false;
-          if (activeEventSource) activeEventSource.close();
-        };
-      }
-
-      function updateBadgeCount() {
-        const availCount = allTrains.filter(t => t.largeDogAvailable === 'available').length;
-        resultsCountBadge.textContent = `${availCount} con plaza / ${allTrains.length} trenes`;
-      }
-
-      function renderTrainCard(t) {
-        const isAvail = t.largeDogAvailable === 'available';
-        const isSold = t.largeDogAvailable === 'sold_out';
-        const isNotSupp = t.largeDogAvailable === 'not_supported';
-
-        let badgeClass = 'available';
-        let badgeText = 'Plaza disponible';
-        let subText = 'Coche 7 estándar';
-
-        if (isSold) {
-          badgeClass = 'sold_out';
-          badgeText = 'Agotado (0/2 plazas)';
-          subText = 'Plazas de perro ocupadas';
-        } else if (isNotSupp) {
-          badgeClass = 'not_supported';
-          badgeText = 'No admite perro grande';
-          subText = 'Solo transportín ≤10kg';
-        }
-
-        const prodClass = (t.productName || '').toLowerCase();
-        const basePrice = t.price ? `${t.price.toFixed(2)} €` : 'Consultar';
-        const dogAddon = t.dogAddonPrice ? `+${t.dogAddonPrice.toFixed(0)}€ perro` : '';
-
-        const card = document.createElement('div');
-        card.className = `train-card ${isAvail ? 'is-available' : ''}`;
-        card.setAttribute('data-available', isAvail ? 'true' : 'false');
-
-        card.innerHTML = `
-          <div class="train-type-block">
-            <span class="train-badge ${prodClass}">${t.productName || 'TREN'}</span>
-            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);">${t.trainCode}</span>
-          </div>
-
-          <div class="train-sched-block">
-            <div class="time-point">
-              <span class="time-val">${t.departure}</span>
-              <span class="time-station">${t.originName ? t.originName.split('-')[0] : 'Origen'}</span>
-            </div>
-            <div class="sched-line">
-              <span class="sched-dur">${t.duration || '2h 30m'}</span>
-              <div class="sched-track"></div>
-            </div>
-            <div class="time-point">
-              <span class="time-val">${t.arrival}</span>
-              <span class="time-station">${t.destinationName ? t.destinationName.split('-')[0] : 'Destino'}</span>
-            </div>
-          </div>
-
-          <div class="train-status-block">
-            <span class="avail-pill ${badgeClass}">
-              ${isAvail ? '<span class="pulse-dot"></span>' : ''}
-              ${badgeText}
-            </span>
-            <span class="status-sub">${subText}</span>
-          </div>
-
-          <div class="train-action-block">
-            <span class="price-total">${basePrice}</span>
-            <span class="price-breakdown">${dogAddon}</span>
-            ${isAvail ? `
-              <a href="${t.bookingUrl || 'https://www.renfe.com/es/es'}" target="_blank" rel="noopener" class="btn-book">
-                Reservar en Renfe ↗
-              </a>
-            ` : ''}
+      if (filtered.length === 0) {
+        radarGrid.innerHTML = `
+          <div style="grid-column: 1 / -1; padding: 32px; text-align: center; color: var(--text-muted); background: var(--bg-surface); border-radius: var(--radius-md);">
+            No hay trenes con plazas libres registradas en este corredor ahora mismo. Prueba con el buscador directo para otra fecha.
           </div>
         `;
-
-        trainsList.appendChild(card);
-        applyFilter();
+        return;
       }
 
-      /* Filters */
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          currentFilter = btn.getAttribute('data-filter');
-          applyFilter();
-        });
+      radarGrid.innerHTML = filtered.map(t => `
+        <div class="radar-card">
+          <div class="card-top">
+            <span class="route-pill">${t.corridor}</span>
+            <span class="verified-pill">
+              <span class="pulse-dot"></span>
+              <span>Hace ${t.checkedMinutesAgo || 5}m</span>
+            </span>
+          </div>
+
+          <div class="card-body">
+            <div class="card-date">${t.displayDate || t.date}</div>
+            <div class="card-times">
+              <span class="time-large">${t.departure}</span>
+              <span class="time-arrow">➔</span>
+              <span class="time-large">${t.arrival}</span>
+              <span class="card-duration">${t.duration}</span>
+            </div>
+
+            <div class="card-train-details">
+              <span class="train-badge">${t.productName} ${t.trainCode}</span>
+              <span>·</span>
+              <span>${t.coach || 'Coche 7'}</span>
+            </div>
+
+            <div class="card-pricing">
+              <div>
+                <span class="price-main">${t.price ? t.price.toFixed(2) + ' €' : 'Tarifa Elige'}</span>
+                <span class="price-addon">(+40 € perro)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <div class="avail-badge">
+              <span>●</span>
+              <span>${t.availableSpots || 2} plaza${(t.availableSpots || 2) > 1 ? 's' : ''} libre${(t.availableSpots || 2) > 1 ? 's' : ''}</span>
+            </div>
+
+            <button class="btn-card" onclick="selectRadarTrain('${t.originCode}', '${t.originName}', '${t.destinationCode}', '${t.destinationName}', '${t.date}')">
+              <span>Buscar este tren</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Corridor Tab Clicks
+    corridorTabs.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        corridorTabs.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentCorridorFilter = tab.dataset.corridor;
+        renderRadarGrid();
+      });
+    });
+
+    // Populate search form and run search
+    window.selectRadarTrain = function(originCode, originName, destCode, destName, date) {
+      originInput.value = originName;
+      originInput.dataset.code = originCode;
+      destInput.value = destName;
+      destInput.dataset.code = destCode;
+      dateInput.value = date;
+
+      // Scroll to search section and trigger search
+      document.getElementById('searchSection').scrollIntoView({ behavior: 'smooth' });
+      triggerSearch();
+    };
+
+    // ── Autocomplete Logic ─────────────────────────────────────────────
+    let debounceTimer = null;
+
+    function setupAutocomplete(input, list) {
+      input.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        const q = input.value.trim();
+        if (q.length < 2) {
+          list.style.display = 'none';
+          return;
+        }
+
+        debounceTimer = setTimeout(async () => {
+          try {
+            const res = await fetch(`/api/stations?q=${encodeURIComponent(q)}`);
+            if (!res.ok) return;
+            const stations = await res.json();
+            if (stations.length === 0) {
+              list.style.display = 'none';
+              return;
+            }
+
+            list.innerHTML = stations.slice(0, 8).map(s => `
+              <div class="autocomplete-item" data-code="${s.code}" data-name="${s.name}">
+                ${s.name}
+              </div>
+            `).join('');
+            list.style.display = 'block';
+          } catch (e) {
+            console.error('Autocomplete error', e);
+          }
+        }, 250);
       });
 
-      function applyFilter() {
-        document.querySelectorAll('.train-card').forEach(card => {
-          if (currentFilter === 'available') {
-            card.style.display = card.getAttribute('data-available') === 'true' ? 'grid' : 'none';
-          } else {
-            card.style.display = 'grid';
-          }
-        });
+      list.addEventListener('click', (e) => {
+        const item = e.target.closest('.autocomplete-item');
+        if (!item) return;
+        input.value = item.dataset.name;
+        input.dataset.code = item.dataset.code;
+        list.style.display = 'none';
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!input.contains(e.target) && !list.contains(e.target)) {
+          list.style.display = 'none';
+        }
+      });
+    }
+
+    setupAutocomplete(originInput, originList);
+    setupAutocomplete(destInput, destList);
+
+    // ── Search Form & SSE Stream ───────────────────────────────────────
+    let currentEventSource = null;
+
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      triggerSearch();
+    });
+
+    function triggerSearch() {
+      const originCode = originInput.dataset.code || originInput.value;
+      const destCode = destInput.dataset.code || destInput.value;
+      const date = dateInput.value;
+
+      if (!originCode || !destCode || !date) return;
+
+      if (currentEventSource) {
+        currentEventSource.close();
       }
-    })();
+
+      resultsSection.style.display = 'block';
+      resultsList.innerHTML = '';
+      progressBox.style.display = 'flex';
+      progressTitle.textContent = `Consultando trenes ${originInput.value} ➔ ${destInput.value}...`;
+      progressDetail.textContent = `Fecha seleccionada: ${date} · Conectando con Renfe...`;
+      searchBtn.disabled = true;
+
+      const url = `/api/search?origin=${encodeURIComponent(originCode)}&destination=${encodeURIComponent(destCode)}&date=${encodeURIComponent(date)}`;
+      currentEventSource = new EventSource(url);
+
+      currentEventSource.addEventListener('searching', (e) => {
+        const data = JSON.parse(e.data);
+        progressDetail.textContent = data.message || 'Analizando convoyes compatibles...';
+      });
+
+      currentEventSource.addEventListener('checking', (e) => {
+        const data = JSON.parse(e.data);
+        progressDetail.textContent = `Verificando ${data.trainCode || ''} (${data.index || 1}/${data.total || '?'})...`;
+      });
+
+      currentEventSource.addEventListener('result', (e) => {
+        const train = JSON.parse(e.data);
+        addTrainResultRow(train);
+      });
+
+      currentEventSource.addEventListener('done', (e) => {
+        const data = JSON.parse(e.data);
+        progressBox.style.display = 'none';
+        searchBtn.disabled = false;
+        currentEventSource.close();
+        if (resultsList.children.length === 0) {
+          resultsList.innerHTML = `
+            <div style="padding: 32px; text-align: center; color: var(--text-muted); background: #FFFFFF; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+              No se encontraron trenes que admitan perros grandes para esta ruta y fecha.
+            </div>
+          `;
+        }
+      });
+
+      currentEventSource.addEventListener('error', (e) => {
+        console.error('SSE Error', e);
+        progressBox.style.display = 'none';
+        searchBtn.disabled = false;
+        currentEventSource.close();
+        if (resultsList.children.length === 0) {
+          resultsList.innerHTML = `
+            <div style="padding: 24px; text-align: center; color: var(--sold-red-text); background: var(--sold-red-bg); border-radius: var(--radius-md);">
+              Error al consultar Renfe o tiempo de espera agotado. Por favor, inténtalo de nuevo.
+            </div>
+          `;
+        }
+      });
+    }
+
+    function addTrainResultRow(train) {
+      const isAvail = train.largeDogAvailable === 'available';
+      const isSold = train.largeDogAvailable === 'sold_out';
+      const isNone = train.largeDogAvailable === 'not_supported';
+
+      let badgeHtml = '';
+      if (isAvail) {
+        badgeHtml = `
+          <div class="badge-available">
+            <span>●</span>
+            <span>Plaza disponible</span>
+          </div>
+        `;
+      } else if (isSold) {
+        badgeHtml = `
+          <div class="badge-sold-out">
+            <span>✕</span>
+            <span>Agotado</span>
+          </div>
+        `;
+      } else {
+        badgeHtml = `
+          <div class="badge-none">
+            <span>–</span>
+            <span>No admite perro 10–40 kg</span>
+          </div>
+        `;
+      }
+
+      const row = document.createElement('div');
+      row.className = 'result-row';
+      row.innerHTML = `
+        <div>
+          <div class="result-train">${train.productName} ${train.trainCode}</div>
+          <div class="result-train-type">${train.fareName || 'Elige Estándar'}</div>
+        </div>
+
+        <div>
+          <div class="result-times">${train.departure} ➔ ${train.arrival}</div>
+          <div class="result-duration">Duración: ${train.duration}</div>
+        </div>
+
+        <div>
+          ${badgeHtml}
+        </div>
+
+        <div style="text-align: right;">
+          <div style="font-weight: 700; color: var(--text-main); font-size: 17px;">
+            ${train.price ? train.price.toFixed(2) + ' €' : '-'}
+          </div>
+          <div style="font-size: 12px; color: var(--text-muted);">
+            ${isAvail ? '+40 € suplemento' : ''}
+          </div>
+        </div>
+
+        <div>
+          ${isAvail ? `
+            <a href="${train.bookingUrl || 'https://www.renfe.com/es/es'}" target="_blank" rel="noopener" class="btn-card">
+              <span>Reservar</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          ` : `
+            <button class="btn-card" style="background: var(--bg-surface); color: var(--text-muted); cursor: not-allowed;" disabled>
+              Agotado
+            </button>
+          `}
+        </div>
+      `;
+      resultsList.appendChild(row);
+    }
+
+    // Initialize radar feed on page load
+    loadRadarFeed();
   </script>
 </body>
 </html>

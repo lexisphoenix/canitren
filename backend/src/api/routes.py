@@ -53,6 +53,15 @@ async def api_stations(q: str = Query("", description="Search query")):
     return [s.to_dict() for s in stations]
 
 
+# ─── Pre-checked available trains feed (Radar) ──────────────────────
+
+@router.get("/radar")
+async def api_radar(corridor: Optional[str] = Query(None, description="Filter corridor")):
+    """Return pre-checked trains that have confirmed available large dog spots."""
+    from ..radar import get_radar_feed
+    return get_radar_feed(corridor)
+
+
 # ─── Dog availability search (SSE) ──────────────────────────────────
 
 @router.get("/search")

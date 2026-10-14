@@ -53,7 +53,11 @@ async def vercel_index_py_fallback(request: Request):
         q = request.query_params.get("q", "")
         stations = await search_stations(q)
         return [s.to_dict() for s in stations]
-    return {"status": "ok", "service": "Canitren API", "matched": matched}
+    if "radar" in matched or "radar" in str(request.url):
+        from .radar import get_radar_feed
+        corridor = request.query_params.get("corridor")
+        return get_radar_feed(corridor)
+    return {"status": "ok", "service": "Patas al Tren API", "matched": matched}
 
 # Frontend — serve the single HTML file
 FRONTEND_DIR = Path(__file__).resolve().parent.parent.parent / "frontend"
