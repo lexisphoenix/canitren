@@ -10,11 +10,13 @@ from __future__ import annotations
 import logging
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
+from datetime import datetime
 from .api.routes import router as api_router
+from .stations import search_stations
 from .config import config
 
 # ── Logging ──────────────────────────────────────────────────────────
@@ -29,13 +31,29 @@ logger = logging.getLogger("renfe-dog-checker")
 # ── App ──────────────────────────────────────────────────────────────
 
 app = FastAPI(
-    title="🐕 Renfe Dog Spot Checker",
+    title="🐕 Canitren",
     description="Find Renfe trains with available spots for large dogs (10-40kg)",
-    version="0.1.0",
+    version="1.0.0",
 )
 
-# API routes
+# API routes mounted at both /api and root
+app.include_router(api_router, prefix="/api")
 app.include_router(api_router)
+
+
+@app.get("/api/index.py")
+@app.get("/index.py")
+async def vercel_index_py_fallback(request: Request):
+    """Fallback handler when Vercel rewrites route to the function filename."""
+    matched = (
+        request.headers.get("x-matched-path", "")
+        or request.headers.get("x-forwarded-uri", "")
+    )
+    if "stations" in matched or "stations" in str(request.url):
+        q = request.query_params.get("q", "")
+        stations = await search_stations(q)
+        return [s.to_dict() for s in stations]
+    return {"status": "ok", "service": "Canitren API", "matched": matched}
 
 # Frontend — serve the single HTML file
 FRONTEND_DIR = Path(__file__).resolve().parent.parent.parent / "frontend"

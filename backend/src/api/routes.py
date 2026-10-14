@@ -22,8 +22,7 @@ from ..stations import search_stations, get_station_name, get_search_term
 from ..scraper import RenfeScraper, SearchResult, TrainResult, DogAvailability
 from ..config import config
 
-logger = logging.getLogger(__name__)
-router = APIRouter(prefix="/api")
+router = APIRouter()
 
 # Global scraper instance (reuse browser across requests)
 _scraper: RenfeScraper | None = None
