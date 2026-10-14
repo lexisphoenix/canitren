@@ -47,6 +47,13 @@
       --accent-amber-subtle: #FEF3C7;
       --accent-red: #DC2626;
 
+      /* Joyful Red-Orange Button Palette */
+      --btn-joyful: #FF5A36;
+      --btn-joyful-hover: #E84522;
+      --btn-joyful-active: #D43816;
+      --btn-joyful-shadow: 0 4px 14px rgba(255, 90, 54, 0.35);
+      --btn-joyful-shadow-hover: 0 6px 20px rgba(255, 90, 54, 0.45);
+
       /* Availability Indicators */
       --avail-green-bg: #ECFDF5;
       --avail-green-text: #065F46;
@@ -308,9 +315,9 @@
       margin-top: 4px;
     }
 
-    /* Section 1: Radar Feed Wrapper (Higher Contrast) */
+    /* Section: Radar Feed Wrapper (Higher Contrast) */
     .radar-section-wrapper {
-      padding: 48px 0 56px;
+      padding: 32px 0 56px;
     }
 
     /* Corridor Filter Tabs */
@@ -493,28 +500,42 @@
     }
 
     .btn-card {
-      background: var(--accent-black);
+      background: var(--btn-joyful);
       color: #FFFFFF;
       border: none;
-      padding: 9px 16px;
-      border-radius: var(--radius-sm);
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.15s ease;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      box-shadow: 0 3px 10px rgba(255, 90, 54, 0.28);
     }
     .btn-card:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
+      background: var(--btn-joyful-hover);
+      transform: translateY(-1.5px);
+      box-shadow: var(--btn-joyful-shadow);
+    }
+    .btn-card:active {
+      background: var(--btn-joyful-active);
+      transform: translateY(0);
+    }
+    .btn-card:disabled {
+      background: var(--bg-surface) !important;
+      color: var(--text-light) !important;
+      border: 1px solid var(--border-light) !important;
+      box-shadow: none !important;
+      cursor: not-allowed !important;
+      transform: none !important;
     }
 
-    /* Section 2: Search Section (Crisp Card with Contrast) */
+    /* Section: Search Section (Placed above radar) */
     .search-section-wrapper {
-      padding-bottom: 64px;
+      padding: 48px 0 24px;
     }
 
     .search-card-elevated {
@@ -618,25 +639,35 @@
 
     .btn-search {
       height: 50px;
-      background: var(--accent-black);
+      background: var(--btn-joyful);
       color: #FFFFFF;
       border: none;
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-pill);
       padding: 0 28px;
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       white-space: nowrap;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+      box-shadow: var(--btn-joyful-shadow);
     }
     .btn-search:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
+      background: var(--btn-joyful-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--btn-joyful-shadow-hover);
+    }
+    .btn-search:active {
+      background: var(--btn-joyful-active);
+      transform: translateY(0);
+    }
+    .btn-search:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none !important;
     }
 
     .date-shortcuts {
@@ -648,19 +679,19 @@
     }
     .shortcut-btn {
       background: #FFFFFF;
-      border: 1px solid var(--border-medium);
+      border: 1.5px solid var(--border-medium);
       border-radius: var(--radius-pill);
       color: var(--text-muted);
       font-size: 12px;
       font-weight: 600;
       cursor: pointer;
-      padding: 4px 12px;
+      padding: 5px 14px;
       transition: all 0.15s ease;
     }
     .shortcut-btn:hover {
-      background: var(--bg-subtle);
-      border-color: var(--border-strong);
-      color: var(--text-main);
+      background: #FFF5F2;
+      border-color: #FF8B70;
+      color: #D43816;
     }
 
     /* Live Search Results Container */
@@ -784,66 +815,126 @@
       width: fit-content;
     }
 
-    /* Section 3: Pro Tips Section (Distinct Color Accents) */
+    /* Section 3: Pro Tips Section (Vertical Stack with Cute Bespoke Illustrations) */
     .tips-section {
       padding-bottom: 72px;
     }
 
-    .tips-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    .tips-list-vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
     }
 
-    .tip-card {
+    .tip-vertical-card {
       background: #FFFFFF;
       border: 1.5px solid var(--border-light);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: 24px 28px;
       box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      gap: 26px;
       position: relative;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
       overflow: hidden;
     }
-    .tip-card::before {
+    .tip-vertical-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
+      border-color: var(--border-medium);
+    }
+
+    .tip-vertical-card::before {
       content: '';
       position: absolute;
-      top: 0;
       left: 0;
-      right: 0;
-      height: 4px;
+      top: 0;
+      bottom: 0;
+      width: 5px;
     }
-    .tip-card.tip-amber::before { background: var(--accent-amber); }
-    .tip-card.tip-blue::before { background: var(--accent-blue); }
-    .tip-card.tip-red::before { background: var(--accent-red); }
-    .tip-card.tip-green::before { background: var(--avail-green-dot); }
+    .tip-vertical-card.tip-amber::before { background: var(--accent-amber); }
+    .tip-vertical-card.tip-blue::before { background: var(--accent-blue); }
+    .tip-vertical-card.tip-rose::before { background: #F43F5E; }
+    .tip-vertical-card.tip-green::before { background: var(--avail-green-dot); }
+
+    .tip-illustration-box {
+      width: 88px;
+      height: 88px;
+      flex-shrink: 0;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tip-vertical-card:hover .tip-illustration-box {
+      transform: scale(1.06) rotate(-2deg);
+    }
+    .tip-amber .tip-illustration-box { background: #FFFBEB; border: 1.5px solid #FDE68A; }
+    .tip-blue .tip-illustration-box { background: #EFF6FF; border: 1.5px solid #BFDBFE; }
+    .tip-rose .tip-illustration-box { background: #FFF1F2; border: 1.5px solid #FECDD3; }
+    .tip-green .tip-illustration-box { background: #ECFDF5; border: 1.5px solid #A7F3D0; }
+
+    .tip-art-svg {
+      width: 74px;
+      height: 74px;
+    }
+
+    .tip-body-content {
+      flex: 1;
+    }
+
+    .tip-header-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
 
     .tip-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: var(--radius-sm);
-      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
     }
-    .tip-amber .tip-badge { background: var(--accent-amber-subtle); color: var(--accent-amber); }
-    .tip-blue .tip-badge { background: var(--accent-blue-subtle); color: var(--accent-blue); }
-    .tip-red .tip-badge { background: var(--sold-red-bg); color: var(--sold-red-text); }
-    .tip-green .tip-badge { background: var(--avail-green-bg); color: var(--avail-green-text); }
+    .tip-amber .tip-badge { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+    .tip-blue .tip-badge { background: #DBEAFE; color: #1E40AF; border: 1px solid #BFDBFE; }
+    .tip-rose .tip-badge { background: #FFE4E6; color: #BE123C; border: 1px solid #FECDD3; }
+    .tip-green .tip-badge { background: #D1FAE5; color: #065F46; border: 1px solid #A7F3D0; }
 
     .tip-title {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 8px;
       letter-spacing: -0.01em;
+      margin-bottom: 6px;
     }
 
     .tip-text {
       font-size: 14px;
       color: var(--text-muted);
       line-height: 1.6;
+    }
+
+    .tip-highlight-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border: 1px solid var(--border-light);
     }
 
     /* Footer */
@@ -882,6 +973,20 @@
       .radar-grid {
         grid-template-columns: 1fr;
       }
+      .tip-vertical-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 20px;
+      }
+      .tip-illustration-box {
+        width: 76px;
+        height: 76px;
+      }
+      .tip-art-svg {
+        width: 64px;
+        height: 64px;
+      }
       .nav-menu {
         display: none;
       }
@@ -917,8 +1022,8 @@
       </a>
 
       <div class="nav-menu">
-        <a href="#radarSection" class="nav-link">Radar en Vivo</a>
         <a href="#searchSection" class="nav-link">Buscador</a>
+        <a href="#radarSection" class="nav-link">Radar en Vivo</a>
         <a href="#tipsSection" class="nav-link">Consejos Pro</a>
         <div class="nav-badge">
           <span class="pulse-dot"></span>
@@ -940,39 +1045,7 @@
     </div>
   </section>
 
-  <!-- Section 1: Pre-Search Live Availability Radar -->
-  <div class="radar-section-wrapper" id="radarSection">
-    <div class="container">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">
-            <span>Plazas Confirmadas en Tiempo Real</span>
-          </h2>
-          <div class="section-desc">Trenes con suplemento canino disponible detectados recientemente en los corredores principales.</div>
-        </div>
-        <div class="verified-pill">
-          <span class="pulse-dot"></span>
-          <span id="feedUpdatedText">Actualizado hace unos minutos</span>
-        </div>
-      </div>
-
-      <!-- Corridor Tabs -->
-      <div class="filter-tabs" id="corridorTabs">
-        <button class="filter-tab active" data-corridor="all">Todos los corredores</button>
-        <button class="filter-tab" data-corridor="sevilla">Madrid ➔ Sevilla</button>
-        <button class="filter-tab" data-corridor="barcelona">Madrid ➔ Barcelona</button>
-        <button class="filter-tab" data-corridor="málaga">Madrid ➔ Málaga</button>
-        <button class="filter-tab" data-corridor="valencia">Madrid ➔ Valencia</button>
-      </div>
-
-      <!-- Cards Grid -->
-      <div class="radar-grid" id="radarGrid">
-        <!-- Injected by JavaScript -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Section 2: Custom Search (High Contrast Card) -->
+  <!-- Section 1: Custom Search (Placed above radar as requested) -->
   <div class="search-section-wrapper" id="searchSection">
     <div class="container">
       <div class="search-card-elevated">
@@ -1037,45 +1110,187 @@
     </div>
   </div>
 
-  <!-- Section 3: Essential Tips (Distinct Color Accents) -->
+  <!-- Section 2: Pre-Search Live Availability Radar -->
+  <div class="radar-section-wrapper" id="radarSection">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span>Plazas Confirmadas en Tiempo Real</span>
+          </h2>
+          <div class="section-desc">Trenes con suplemento canino disponible detectados recientemente en los corredores principales.</div>
+        </div>
+        <div class="verified-pill">
+          <span class="pulse-dot"></span>
+          <span id="feedUpdatedText">Actualizado hace unos minutos</span>
+        </div>
+      </div>
+
+      <!-- Corridor Tabs -->
+      <div class="filter-tabs" id="corridorTabs">
+        <button class="filter-tab active" data-corridor="all">Todos los corredores</button>
+        <button class="filter-tab" data-corridor="sevilla">Madrid ➔ Sevilla</button>
+        <button class="filter-tab" data-corridor="barcelona">Madrid ➔ Barcelona</button>
+        <button class="filter-tab" data-corridor="málaga">Madrid ➔ Málaga</button>
+        <button class="filter-tab" data-corridor="valencia">Madrid ➔ Valencia</button>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="radar-grid" id="radarGrid">
+        <!-- Injected by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Essential Tips (Vertical Illustrated Stack) -->
   <section class="container tips-section" id="tipsSection">
     <div class="section-header">
       <div>
         <h2 class="section-title">Consejos Clave de Disponibilidad</h2>
-        <div class="section-desc">Cómo funciona el sistema de suplemento de perro grande en Renfe.</div>
+        <div class="section-desc">Guía esencial para no quedarte sin plaza con tu perro en trenes AVE de Renfe.</div>
       </div>
     </div>
 
-    <div class="tips-grid">
-      <div class="tip-card tip-amber">
-        <span class="tip-badge">Regla 01</span>
-        <div class="tip-title">Corte estricto de 24 horas</div>
-        <div class="tip-text">
-          Renfe desactiva automáticamente el suplemento canino en el sistema 24 horas antes de la salida, incluso aunque queden las 2 plazas libres. Compra siempre con antelación.
+    <div class="tips-list-vertical">
+      <!-- Tip 1: 24h Cutoff -->
+      <div class="tip-vertical-card tip-amber">
+        <div class="tip-illustration-box">
+          <svg class="tip-art-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="42" r="28" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2.5"/>
+            <!-- Dog ears on clock -->
+            <path d="M22 28 C 16 16, 22 8, 30 18" stroke="#D97706" stroke-width="3" stroke-linecap="round" fill="#FDE68A"/>
+            <path d="M58 28 C 64 16, 58 8, 50 18" stroke="#D97706" stroke-width="3" stroke-linecap="round" fill="#FDE68A"/>
+            <!-- Clock hands -->
+            <circle cx="40" cy="42" r="3" fill="#B45309"/>
+            <path d="M40 42 L 40 28" stroke="#B45309" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M40 42 L 50 42" stroke="#B45309" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Sparkles -->
+            <path d="M63 24 L65 21 L67 24 L70 26 L67 28 L65 31 L63 28 L60 26 Z" fill="#F59E0B"/>
+            <circle cx="16" cy="48" r="2" fill="#F59E0B"/>
+            <!-- 24h tag -->
+            <rect x="29" y="56" width="22" height="12" rx="6" fill="#D97706"/>
+            <text x="40" y="65" font-size="8" font-weight="800" fill="#FFFFFF" text-anchor="middle" font-family="sans-serif">24h</text>
+          </svg>
+        </div>
+        <div class="tip-body-content">
+          <div class="tip-header-row">
+            <span class="tip-badge">Regla 01 · Antelación Estricta</span>
+          </div>
+          <div class="tip-title">Corte automático a las 24 horas previas</div>
+          <div class="tip-text">
+            Renfe desactiva automáticamente el suplemento canino en el sistema <strong>exactamente 24 horas antes</strong> de la salida de la cabecera, aunque los 2 asientos caninos estén totalmente vacíos. Compra siempre antes del límite de las 24h.
+          </div>
+          <div class="tip-highlight-pill">
+            <span>⏱️</span>
+            <span>Recomendación: Reserva con al menos 48h de margen para no quedarte bloqueado por el sistema.</span>
+          </div>
         </div>
       </div>
 
-      <div class="tip-card tip-blue">
-        <span class="tip-badge">Regla 02</span>
-        <div class="tip-title">Solo 2 perros por convoy</div>
-        <div class="tip-text">
-          Solo existen 2 plazas para perros de 10 a 40 kg por tren (ubicadas exclusivamente en el Coche 7, asientos H1 y H2 en trenes AVE S-103 y S-112). En cuanto dos viajeros las reservan, queda agotado.
+      <!-- Tip 2: 2 Dogs limit in Coach 7 -->
+      <div class="tip-vertical-card tip-blue">
+        <div class="tip-illustration-box">
+          <svg class="tip-art-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="12" y="14" width="56" height="52" rx="14" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2.5"/>
+            <!-- Train window -->
+            <rect x="20" y="22" width="40" height="26" rx="8" fill="#FFFFFF" stroke="#93C5FD" stroke-width="2"/>
+            <!-- Cute dog inside window -->
+            <ellipse cx="40" cy="38" rx="11" ry="9" fill="#FBBF24"/>
+            <ellipse cx="40" cy="41" rx="5" ry="4" fill="#FDE68A"/>
+            <circle cx="40" cy="39" r="1.8" fill="#1E293B"/>
+            <circle cx="36" cy="35" r="1.5" fill="#1E293B"/>
+            <circle cx="44" cy="35" r="1.5" fill="#1E293B"/>
+            <path d="M30 31 C 26 31, 26 39, 31 40" fill="#D97706"/>
+            <path d="M50 31 C 54 31, 54 39, 49 40" fill="#D97706"/>
+            <!-- Coach 7 badge -->
+            <rect x="22" y="52" width="36" height="11" rx="5.5" fill="#2563EB"/>
+            <text x="40" y="60.5" font-size="7.5" font-weight="800" fill="#FFFFFF" text-anchor="middle" font-family="sans-serif">COCHE 7 · 2 PLAZAS</text>
+          </svg>
+        </div>
+        <div class="tip-body-content">
+          <div class="tip-header-row">
+            <span class="tip-badge">Regla 02 · Capacidad Máxima</span>
+          </div>
+          <div class="tip-title">Solo 2 perros por convoy (Coche 7 exclusivo)</div>
+          <div class="tip-text">
+            Por normativa de seguridad de Renfe, solo se autorizan <strong>2 perros de 10 a 40 kg</strong> por tren. Están asignados a asientos específicos con funda especial y kit de viaje (H1 y H2 en trenes AVE S-103 y S-112). En cuanto dos viajeros los compran, el tren se marca como agotado.
+          </div>
+          <div class="tip-highlight-pill">
+            <span>🐾</span>
+            <span>Ubicación: Asientos adaptados con espacio reservado en el suelo junto a tu butaca.</span>
+          </div>
         </div>
       </div>
 
-      <div class="tip-card tip-red">
-        <span class="tip-badge">Regla 03</span>
-        <div class="tip-title">La trampa del Coche Silencio</div>
-        <div class="tip-text">
-          El billete requerido es la tarifa <em>Elige Estándar</em>. Pero si el algoritmo de Renfe te preasigna plaza en un coche silencioso, el suplemento se inhabilita porque no se admiten mascotas allí.
+      <!-- Tip 3: Coche Silencio Trap -->
+      <div class="tip-vertical-card tip-rose">
+        <div class="tip-illustration-box">
+          <svg class="tip-art-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="28" fill="#FFE4E6" stroke="#FB7185" stroke-width="2.5"/>
+            <!-- Curled sleeping puppy -->
+            <ellipse cx="40" cy="45" rx="17" ry="13" fill="#FBBF24"/>
+            <circle cx="32" cy="38" r="9" fill="#F59E0B"/>
+            <ellipse cx="25" cy="40" rx="3.5" ry="6" fill="#D97706" transform="rotate(-15 25 40)"/>
+            <!-- Sleep mask -->
+            <rect x="27" y="34" width="13" height="7" rx="3.5" fill="#F43F5E"/>
+            <path d="M26 37 L 41 37" stroke="#BE123C" stroke-width="1.2"/>
+            <!-- Zzz -->
+            <text x="52" y="27" font-size="10" font-weight="800" fill="#E11D48" font-family="sans-serif">Z</text>
+            <text x="60" y="21" font-size="8" font-weight="700" fill="#FB7185" font-family="sans-serif">z</text>
+            <text x="66" y="17" font-size="6" font-weight="700" fill="#FDA4AF" font-family="sans-serif">z</text>
+            <!-- No sound sign -->
+            <circle cx="21" cy="24" r="7" fill="#FFFFFF" stroke="#E11D48" stroke-width="1.5"/>
+            <path d="M18 21 L 24 27" stroke="#E11D48" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="tip-body-content">
+          <div class="tip-header-row">
+            <span class="tip-badge">Regla 03 · Configuración de Billete</span>
+          </div>
+          <div class="tip-title">Cuidado con la trampa del Coche Silencio</div>
+          <div class="tip-text">
+            El billete base necesario es la tarifa <em>Elige Estándar</em>. Sin embargo, si al reservar el selector de plazas de Renfe te preasigna automáticamente en un Coche en Silencio, el suplemento canino aparecerá inhabilitado ("No disponible") porque las mascotas están expresamente prohibidas en esos coches.
+          </div>
+          <div class="tip-highlight-pill">
+            <span>🤫</span>
+            <span>Solución: Cambia de asiento manualmente a Coche 7 para desbloquear el suplemento de 40 €.</span>
+          </div>
         </div>
       </div>
 
-      <div class="tip-card tip-green">
-        <span class="tip-badge">Regla 04</span>
-        <div class="tip-title">Ventana de cancelaciones</div>
-        <div class="tip-text">
-          Entre 48 y 72 horas antes de la salida suelen liberarse billetes con plaza de perro por cambios de billete Puente AVE o corporativos. Si no encontrabas sitio, revisa en esa ventana.
+      <!-- Tip 4: 48h-72h Cancellations -->
+      <div class="tip-vertical-card tip-green">
+        <div class="tip-illustration-box">
+          <svg class="tip-art-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="28" fill="#D1FAE5" stroke="#10B981" stroke-width="2.5"/>
+            <!-- Puppy face -->
+            <ellipse cx="37" cy="44" rx="12" ry="10" fill="#FBBF24"/>
+            <ellipse cx="37" cy="46" rx="6" ry="4" fill="#FEF3C7"/>
+            <circle cx="37" cy="44" r="1.8" fill="#1E293B"/>
+            <circle cx="33" cy="41" r="1.5" fill="#1E293B"/>
+            <circle cx="41" cy="41" r="1.5" fill="#1E293B"/>
+            <!-- Detective hat -->
+            <path d="M25 35 Q 37 32 49 35" stroke="#047857" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28 35 C 28 26, 46 26, 46 35 Z" fill="#059669"/>
+            <!-- Magnifying glass -->
+            <circle cx="53" cy="46" r="9" fill="#FFFFFF" stroke="#047857" stroke-width="2.5"/>
+            <path d="M60 53 L 67 60" stroke="#047857" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- Ticket inside magnifying glass -->
+            <rect x="48" y="42" width="10" height="7" rx="1.5" fill="#34D399"/>
+          </svg>
+        </div>
+        <div class="tip-body-content">
+          <div class="tip-header-row">
+            <span class="tip-badge">Regla 04 · Ventana Secreta</span>
+          </div>
+          <div class="tip-title">Ventana dorada de cancelaciones (48 h a 72 h)</div>
+          <div class="tip-text">
+            Muchos billetes corporativos y tarifas Puente AVE se anulan o modifican entre 2 y 3 días antes del viaje. Es habitual que trenes que llevaban semanas agotados vuelvan a mostrar 1 o 2 plazas para perro grande en esa ventana temporal.
+          </div>
+          <div class="tip-highlight-pill">
+            <span>🔍</span>
+            <span>Consejo: Si tu tren favorito estaba agotado, revísalo en nuestro radar exactamente 2 o 3 días antes.</span>
+          </div>
         </div>
       </div>
     </div>
