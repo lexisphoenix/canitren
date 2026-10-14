@@ -357,24 +357,30 @@ class RenfeScraper:
 
         # --- Date ---
         # Renfe date picker is tricky — it might be a calendar widget
-        # Try finding the date input and clicking/typing directly
         try:
-            date_input = page.locator(Selectors.DATE_INPUT).first
-            if await date_input.is_visible(timeout=2000):
-                await date_input.click()
-                await page.wait_for_timeout(300)
-
-                # Try to clear and type date
-                await date_input.fill("")
-                await date_input.type(date, delay=50)
-                await page.wait_for_timeout(300)
-                await date_input.press("Enter")
-                logger.info("Set date: %s", date)
-        except (PlaywrightTimeout, Exception) as e:
-            logger.warning("Could not set date via input, trying calendar: %s", e)
-            # Calendar widget — try clicking the right day
-            # This is complex and depends on the exact Renfe calendar implementation
-            # For the MVP, we'll rely on the default date or manual intervention
+            # Set the date directly by removing readonly attribute and dispatching events
+            await page.evaluate(
+                """
+                ([val]) => {
+                    const selectors = ['#first-input', "input[formcontrolname='departureDate']", "input[placeholder*='Fecha ida']"];
+                    for (const s of selectors) {
+                        const el = document.querySelector(s);
+                        if (el) {
+                            el.removeAttribute('readonly');
+                            el.value = val;
+                            el.dispatchEvent(new Event('input', { bubbles: true }));
+                            el.dispatchEvent(new Event('change', { bubbles: true }));
+                            break;
+                        }
+                    }
+                }
+                """,
+                [date],
+            )
+            logger.info("Set date on Renfe: %s", date)
+            await page.wait_for_timeout(300)
+        except Exception as e:
+            logger.warning("Could not set date on Renfe form: %s", e)
 
     async def _click_search(self, page: Page):
         """Click the search button and wait for results."""

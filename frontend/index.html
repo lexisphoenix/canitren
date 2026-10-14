@@ -7,57 +7,74 @@
   <meta name="theme-color" content="#FFFFFF">
   <title>Patas al Tren · Plazas para perros grandes en Renfe AVE</title>
   
-  <!-- Minimalist Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22 fill=%22none%22 stroke=%22%23171A20%22 stroke-width=%222.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M3 20h22c2.5 0 4.5-2 4.5-4.5S27.5 11 25 11H13l-4 5H3v4z%22/><circle cx=%228%22 cy=%2223%22 r=%222.5%22/><circle cx=%2222%22 cy=%2223%22 r=%222.5%22/><path d=%22M15 11V6l3 2 3-2v5%22/></svg>">
+  <!-- Minimalist Cute Paw Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22 fill=%22%230F172A%22><path d=%22M16 14.5c-4.2 0-7 3.2-7 6.5 0 2.8 2.2 4.5 4.8 4.5 1.5 0 2.2-.8 3.2-.8s1.7.8 3.2.8c2.6 0 4.8-1.7 4.8-4.5 0-3.3-2.8-6.5-7-6.5z%22/><ellipse cx=%228.5%22 cy=%2211.5%22 rx=%222.5%22 ry=%223.5%22 transform=%22rotate(-18 8.5 11.5)%22/><ellipse cx=%2213.2%22 cy=%227.5%22 rx=%222.5%22 ry=%223.8%22 transform=%22rotate(-6 13.2 7.5)%22/><ellipse cx=%2218.8%22 cy=%227.5%22 rx=%222.5%22 ry=%223.8%22 transform=%22rotate(6 18.8 7.5)%22/><ellipse cx=%2223.5%22 cy=%2211.5%22 rx=%222.5%22 ry=%223.5%22 transform=%22rotate(18 23.5 11.5)%22/></svg>">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
-       Design System — Tesla Minimalist Light Theme
-       Clean, pure, high-contrast, uncluttered, spacious
+       Design System — Clean High-Contrast Aesthetic
+       Spacious, crisp borders, subtle warm accents, modern luxury tech
        ========================================================================== */
     :root {
       --bg-base: #FFFFFF;
-      --bg-surface: #F8F8F9;
-      --bg-subtle: #F2F2F4;
+      --bg-hero: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+      --bg-surface: #F8FAFC;
+      --bg-subtle: #F1F5F9;
       --bg-card: #FFFFFF;
-      --bg-card-hover: #FAFAFB;
 
-      --border-light: #EBECEF;
-      --border-medium: #D1D3D8;
-      --border-dark: #171A20;
+      /* High-Contrast Borders */
+      --border-light: #E2E8F0;
+      --border-medium: #CBD5E1;
+      --border-strong: #94A3B8;
+      --border-dark: #0F172A;
 
-      --text-main: #171A20;       /* Tesla Obsidian */
-      --text-muted: #5C5E62;      /* Slate secondary */
-      --text-tertiary: #8E9094;   /* Subtle label */
+      /* Typography */
+      --text-main: #0F172A;       /* Deep slate obsidian */
+      --text-muted: #334155;      /* Slate secondary */
+      --text-tertiary: #64748B;   /* Medium label */
+      --text-light: #94A3B8;
 
-      --accent-black: #171A20;
-      --accent-hover: #393C41;
-      --accent-red: #E82127;      /* Tesla red accent */
+      /* Primary Accents */
+      --accent-black: #0F172A;
+      --accent-hover: #1E293B;
+      --accent-blue: #2563EB;
+      --accent-blue-subtle: #EFF6FF;
+      --accent-amber: #D97706;
+      --accent-amber-subtle: #FEF3C7;
+      --accent-red: #DC2626;
 
-      --avail-green-bg: #E6F4EA;
-      --avail-green-text: #137333;
-      --avail-green-dot: #1E8E3E;
+      /* Availability Indicators */
+      --avail-green-bg: #ECFDF5;
+      --avail-green-text: #065F46;
+      --avail-green-border: #A7F3D0;
+      --avail-green-dot: #10B981;
 
-      --sold-red-bg: #FCE8E6;
-      --sold-red-text: #C5221F;
-      --sold-red-dot: #D93025;
+      --sold-red-bg: #FEF2F2;
+      --sold-red-text: #991B1B;
+      --sold-red-border: #FECACA;
+      --sold-red-dot: #EF4444;
 
-      --neutral-grey-bg: #F1F3F4;
-      --neutral-grey-text: #5F6368;
+      --neutral-grey-bg: #F1F5F9;
+      --neutral-grey-text: #475569;
+      --neutral-grey-border: #E2E8F0;
 
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      --radius-sm: 4px;
-      --radius-md: 8px;
+      --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
       --radius-lg: 16px;
+      --radius-xl: 22px;
       --radius-pill: 9999px;
 
-      --shadow-subtle: 0 1px 3px rgba(0,0,0,0.04);
-      --shadow-card: 0 2px 10px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
-      --shadow-card-hover: 0 8px 24px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.03);
+      --shadow-subtle: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+      --shadow-card-hover: 0 12px 30px -4px rgba(15, 23, 42, 0.09), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+      --shadow-elevated: 0 10px 35px -5px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -69,7 +86,7 @@
     body {
       background-color: var(--bg-base);
       color: var(--text-main);
-      font-family: var(--font-sans);
+      font-family: var(--font-body);
       font-size: 15px;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
@@ -77,26 +94,30 @@
       overflow-x: hidden;
     }
 
+    h1, h2, h3, h4, .brand-title {
+      font-family: var(--font-display);
+    }
+
     /* Container */
     .container {
-      max-width: 1120px;
+      max-width: 1140px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* Top Utility / Announcement Bar */
+    /* Top Announcement Bar */
     .top-bar {
       border-bottom: 1px solid var(--border-light);
       font-size: 12px;
       color: var(--text-muted);
-      padding: 8px 0;
+      padding: 9px 0;
       text-align: center;
-      background: var(--bg-surface);
-      letter-spacing: 0.02em;
+      background: #F8FAFC;
+      letter-spacing: 0.01em;
     }
     .top-bar strong {
       color: var(--text-main);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     /* Header / Navbar */
@@ -104,10 +125,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-light);
-      height: 68px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1.5px solid var(--border-light);
+      height: 72px;
       display: flex;
       align-items: center;
     }
@@ -127,11 +148,16 @@
       color: var(--text-main);
     }
 
+    /* Paw Logo Icon (Slightly larger, cute and stylish) */
     .brand-logo-icon {
-      width: 32px;
-      height: 32px;
-      color: var(--text-main);
+      width: 38px;
+      height: 38px;
+      color: var(--accent-black);
       flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    .brand-link:hover .brand-logo-icon {
+      transform: scale(1.06) rotate(-4deg);
     }
 
     .brand-text {
@@ -140,37 +166,37 @@
     }
 
     .brand-title {
-      font-size: 18px;
-      font-weight: 700;
+      font-size: 20px;
+      font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.1;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
     }
 
     .brand-title span.dot {
-      color: var(--accent-red);
+      color: var(--accent-amber);
     }
 
     .brand-tag {
       font-size: 11px;
-      color: var(--text-muted);
-      font-weight: 400;
+      color: var(--text-tertiary);
+      font-weight: 500;
       letter-spacing: 0.02em;
     }
 
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 28px;
     }
 
     .nav-link {
       color: var(--text-muted);
       text-decoration: none;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       transition: color 0.15s ease;
     }
     .nav-link:hover {
@@ -180,68 +206,78 @@
     .nav-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      padding: 5px 12px;
+      gap: 8px;
+      background: var(--avail-green-bg);
+      border: 1px solid var(--avail-green-border);
+      padding: 6px 14px;
       border-radius: var(--radius-pill);
       font-size: 12px;
-      font-weight: 500;
-      color: var(--text-main);
+      font-weight: 600;
+      color: var(--avail-green-text);
     }
 
     .pulse-dot {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--avail-green-dot);
       display: inline-block;
-      box-shadow: 0 0 0 0 rgba(30, 142, 62, 0.4);
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
       animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
       0% {
-        box-shadow: 0 0 0 0 rgba(30, 142, 62, 0.5);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
       }
       70% {
-        box-shadow: 0 0 0 6px rgba(30, 142, 62, 0);
+        box-shadow: 0 0 0 7px rgba(16, 185, 129, 0);
       }
       100% {
-        box-shadow: 0 0 0 0 rgba(30, 142, 62, 0);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
       }
     }
 
     /* Hero Section */
     .hero {
-      padding: 64px 0 40px;
+      background: var(--bg-hero);
+      border-bottom: 1px solid var(--border-light);
+      padding: 68px 0 54px;
       text-align: center;
     }
 
-    .hero-pretitle {
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-medium);
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-tertiary);
-      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-subtle);
     }
 
     .hero-title {
-      font-size: 42px;
-      font-weight: 700;
+      font-size: 44px;
+      font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.15;
       color: var(--text-main);
-      max-width: 720px;
-      margin: 0 auto 16px;
+      max-width: 740px;
+      margin: 0 auto 18px;
     }
 
     .hero-subtitle {
       font-size: 17px;
       font-weight: 400;
       color: var(--text-muted);
-      max-width: 600px;
+      max-width: 620px;
       margin: 0 auto 36px;
       line-height: 1.6;
     }
@@ -251,139 +287,152 @@
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1.5px solid var(--border-light);
     }
 
     .section-title {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 800;
       letter-spacing: -0.02em;
       color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .section-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 2px;
+      font-size: 14px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+
+    /* Section 1: Radar Feed Wrapper (Higher Contrast) */
+    .radar-section-wrapper {
+      padding: 48px 0 56px;
     }
 
     /* Corridor Filter Tabs */
     .filter-tabs {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
     }
 
     .filter-tab {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-medium);
       color: var(--text-muted);
-      padding: 6px 14px;
+      padding: 8px 16px;
       border-radius: var(--radius-pill);
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.15s ease;
+      box-shadow: var(--shadow-subtle);
     }
     .filter-tab:hover {
       background: var(--bg-subtle);
+      border-color: var(--border-strong);
       color: var(--text-main);
     }
     .filter-tab.active {
       background: var(--accent-black);
       color: #FFFFFF;
       border-color: var(--accent-black);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
     }
 
     /* Radar Cards Grid */
     .radar-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 16px;
-      margin-bottom: 56px;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 20px;
     }
 
     .radar-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-light);
+      border: 1.5px solid var(--border-light);
       border-radius: var(--radius-lg);
-      padding: 20px;
+      padding: 24px;
       box-shadow: var(--shadow-card);
       transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
     }
     .radar-card:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       box-shadow: var(--shadow-card-hover);
-      border-color: var(--border-medium);
+      border-color: var(--border-strong);
     }
 
     .card-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .route-pill {
       font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: var(--text-main);
-      background: var(--bg-surface);
-      padding: 4px 10px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #1E40AF;
+      background: #EFF6FF;
+      padding: 5px 12px;
       border-radius: var(--radius-sm);
-      border: 1px solid var(--border-light);
+      border: 1px solid #BFDBFE;
     }
 
     .verified-pill {
-      font-size: 11px;
+      font-size: 12px;
+      font-weight: 500;
       color: var(--text-tertiary);
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
 
     .card-body {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .card-date {
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-muted);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      text-transform: capitalize;
     }
 
     .card-times {
       display: flex;
       align-items: baseline;
-      gap: 8px;
-      margin-bottom: 8px;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
     .time-large {
-      font-size: 24px;
-      font-weight: 700;
+      font-size: 26px;
+      font-weight: 800;
       letter-spacing: -0.03em;
       color: var(--text-main);
     }
 
     .time-arrow {
       color: var(--text-tertiary);
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .card-duration {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-tertiary);
-      font-weight: 500;
+      font-weight: 600;
       margin-left: auto;
     }
 
@@ -393,16 +442,17 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      font-weight: 500;
     }
 
     .train-badge {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-main);
     }
 
     .card-pricing {
-      margin-top: 12px;
-      padding-top: 12px;
+      margin-top: 14px;
+      padding-top: 14px;
       border-top: 1px solid var(--border-light);
       display: flex;
       align-items: baseline;
@@ -410,13 +460,15 @@
     }
 
     .price-main {
-      font-size: 18px;
-      font-weight: 700;
+      font-size: 20px;
+      font-weight: 800;
       color: var(--text-main);
     }
     .price-addon {
       font-size: 12px;
-      color: var(--text-muted);
+      font-weight: 500;
+      color: var(--text-tertiary);
+      margin-left: 4px;
     }
 
     .card-footer {
@@ -424,55 +476,61 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-top: 14px;
+      margin-top: 16px;
     }
 
     .avail-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 10px;
+      padding: 6px 12px;
       border-radius: var(--radius-pill);
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       background: var(--avail-green-bg);
       color: var(--avail-green-text);
+      border: 1.5px solid var(--avail-green-border);
     }
 
     .btn-card {
       background: var(--accent-black);
       color: #FFFFFF;
       border: none;
-      padding: 8px 14px;
+      padding: 9px 16px;
       border-radius: var(--radius-sm);
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.15s ease;
+      transition: all 0.15s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
     .btn-card:hover {
       background: var(--accent-hover);
+      transform: translateY(-1px);
     }
 
-    /* Search Section (Tesla Style) */
-    .search-section {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      margin-bottom: 56px;
+    /* Section 2: Search Section (Crisp Card with Contrast) */
+    .search-section-wrapper {
+      padding-bottom: 64px;
+    }
+
+    .search-card-elevated {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      box-shadow: var(--shadow-elevated);
     }
 
     .search-title-row {
       margin-bottom: 24px;
     }
     .search-title {
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 24px;
+      font-weight: 800;
       letter-spacing: -0.02em;
       color: var(--text-main);
     }
@@ -484,24 +542,24 @@
 
     .search-form {
       display: grid;
-      grid-template-columns: 1.5fr 1.5fr 1.2fr auto;
-      gap: 12px;
+      grid-template-columns: 1.6fr 1.6fr 1.3fr auto;
+      gap: 14px;
       align-items: flex-end;
     }
 
     .field-group {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
       position: relative;
     }
 
     .field-label {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--text-tertiary);
+      color: var(--text-muted);
     }
 
     .input-wrapper {
@@ -510,20 +568,21 @@
 
     .input-field {
       width: 100%;
-      height: 48px;
+      height: 50px;
       background: #FFFFFF;
-      border: 1px solid var(--border-medium);
+      border: 1.5px solid var(--border-medium);
       border-radius: var(--radius-sm);
-      padding: 0 14px;
+      padding: 0 16px;
       font-size: 15px;
       font-family: inherit;
       color: var(--text-main);
+      font-weight: 500;
       outline: none;
       transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
     .input-field:focus {
       border-color: var(--accent-black);
-      box-shadow: 0 0 0 1px var(--accent-black);
+      box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.1);
     }
 
     .autocomplete-list {
@@ -532,9 +591,9 @@
       left: 0;
       right: 0;
       background: #FFFFFF;
-      border: 1px solid var(--border-medium);
+      border: 1.5px solid var(--border-strong);
       border-radius: var(--radius-sm);
-      margin-top: 4px;
+      margin-top: 6px;
       max-height: 240px;
       overflow-y: auto;
       z-index: 50;
@@ -542,8 +601,9 @@
       display: none;
     }
     .autocomplete-item {
-      padding: 10px 14px;
+      padding: 12px 16px;
       font-size: 14px;
+      font-weight: 500;
       color: var(--text-main);
       cursor: pointer;
       border-bottom: 1px solid var(--border-light);
@@ -553,45 +613,53 @@
     }
     .autocomplete-item:hover, .autocomplete-item.highlighted {
       background: var(--bg-surface);
+      color: var(--accent-blue);
     }
 
     .btn-search {
-      height: 48px;
+      height: 50px;
       background: var(--accent-black);
       color: #FFFFFF;
       border: none;
       border-radius: var(--radius-sm);
       padding: 0 28px;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      transition: background 0.15s ease;
+      transition: all 0.15s ease;
       white-space: nowrap;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
     }
     .btn-search:hover {
       background: var(--accent-hover);
+      transform: translateY(-1px);
     }
 
     .date-shortcuts {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-top: 14px;
+      margin-top: 16px;
+      flex-wrap: wrap;
     }
     .shortcut-btn {
-      background: transparent;
-      border: none;
+      background: #FFFFFF;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-pill);
       color: var(--text-muted);
       font-size: 12px;
+      font-weight: 600;
       cursor: pointer;
-      text-decoration: underline;
-      padding: 2px 4px;
+      padding: 4px 12px;
+      transition: all 0.15s ease;
     }
     .shortcut-btn:hover {
+      background: var(--bg-subtle);
+      border-color: var(--border-strong);
       color: var(--text-main);
     }
 
@@ -600,24 +668,25 @@
       display: none;
       margin-top: 32px;
       padding-top: 24px;
-      border-top: 1px solid var(--border-light);
+      border-top: 1.5px solid var(--border-light);
     }
 
     .progress-box {
       background: #FFFFFF;
-      border: 1px solid var(--border-light);
+      border: 1.5px solid var(--border-medium);
       border-radius: var(--radius-md);
-      padding: 18px 24px;
+      padding: 20px 24px;
       margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 16px;
+      box-shadow: var(--shadow-subtle);
     }
 
     .spinner {
-      width: 20px;
-      height: 20px;
-      border: 2px solid var(--border-light);
+      width: 22px;
+      height: 22px;
+      border: 2.5px solid var(--border-light);
       border-top-color: var(--accent-black);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
@@ -636,51 +705,54 @@
 
     .result-row {
       background: #FFFFFF;
-      border: 1px solid var(--border-light);
+      border: 1.5px solid var(--border-light);
       border-radius: var(--radius-md);
-      padding: 18px 24px;
+      padding: 20px 24px;
       display: grid;
-      grid-template-columns: 140px 180px 180px 1fr auto;
+      grid-template-columns: 150px 200px 180px 1fr auto;
       align-items: center;
       gap: 16px;
       box-shadow: var(--shadow-subtle);
-      transition: border-color 0.15s ease;
+      transition: border-color 0.15s ease, transform 0.15s ease;
     }
     .result-row:hover {
       border-color: var(--border-medium);
+      transform: translateY(-1px);
     }
 
     .result-train {
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text-main);
-      font-size: 16px;
+      font-size: 17px;
     }
     .result-train-type {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-weight: 400;
+      font-size: 13px;
+      color: var(--text-tertiary);
+      font-weight: 500;
     }
 
     .result-times {
-      font-size: 18px;
-      font-weight: 700;
+      font-size: 19px;
+      font-weight: 800;
       color: var(--text-main);
     }
     .result-duration {
       font-size: 12px;
       color: var(--text-tertiary);
+      font-weight: 600;
     }
 
     .badge-available {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 10px;
+      padding: 6px 12px;
       border-radius: var(--radius-pill);
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       background: var(--avail-green-bg);
       color: var(--avail-green-text);
+      border: 1.5px solid var(--avail-green-border);
       width: fit-content;
     }
 
@@ -688,12 +760,13 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 10px;
+      padding: 6px 12px;
       border-radius: var(--radius-pill);
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       background: var(--sold-red-bg);
       color: var(--sold-red-text);
+      border: 1.5px solid var(--sold-red-border);
       width: fit-content;
     }
 
@@ -701,46 +774,67 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 10px;
+      padding: 6px 12px;
       border-radius: var(--radius-pill);
       font-size: 12px;
-      font-weight: 500;
+      font-weight: 600;
       background: var(--neutral-grey-bg);
       color: var(--neutral-grey-text);
+      border: 1px solid var(--neutral-grey-border);
       width: fit-content;
     }
 
-    /* Pro Tips Section */
+    /* Section 3: Pro Tips Section (Distinct Color Accents) */
     .tips-section {
-      margin-bottom: 72px;
+      padding-bottom: 72px;
     }
 
     .tips-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
 
     .tip-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-light);
       border-radius: var(--radius-lg);
       padding: 24px;
-      box-shadow: var(--shadow-subtle);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
     }
+    .tip-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+    .tip-card.tip-amber::before { background: var(--accent-amber); }
+    .tip-card.tip-blue::before { background: var(--accent-blue); }
+    .tip-card.tip-red::before { background: var(--accent-red); }
+    .tip-card.tip-green::before { background: var(--avail-green-dot); }
 
-    .tip-number {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--text-tertiary);
-      letter-spacing: 0.1em;
+    .tip-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
     }
+    .tip-amber .tip-badge { background: var(--accent-amber-subtle); color: var(--accent-amber); }
+    .tip-blue .tip-badge { background: var(--accent-blue-subtle); color: var(--accent-blue); }
+    .tip-red .tip-badge { background: var(--sold-red-bg); color: var(--sold-red-text); }
+    .tip-green .tip-badge { background: var(--avail-green-bg); color: var(--avail-green-text); }
 
     .tip-title {
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 17px;
+      font-weight: 800;
       color: var(--text-main);
       margin-bottom: 8px;
       letter-spacing: -0.01em;
@@ -754,17 +848,19 @@
 
     /* Footer */
     .footer {
-      border-top: 1px solid var(--border-light);
+      border-top: 1.5px solid var(--border-light);
       padding: 40px 0;
       font-size: 13px;
       color: var(--text-tertiary);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      background: #F8FAFC;
     }
     .footer a {
       color: var(--text-muted);
       text-decoration: none;
+      font-weight: 600;
     }
     .footer a:hover {
       color: var(--text-main);
@@ -781,7 +877,7 @@
       }
       .result-row {
         grid-template-columns: 1fr;
-        gap: 8px;
+        gap: 10px;
       }
       .radar-grid {
         grid-template-columns: 1fr;
@@ -803,17 +899,15 @@
   <header class="nav-header">
     <div class="container nav-inner">
       <a href="#" class="brand-link">
-        <!-- Minimalist Dog + Bullet Train Silhouette Logo -->
-        <svg class="brand-logo-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <!-- Aerodynamic train body -->
-          <path d="M4 22h21c2.2 0 4-1.8 4-4s-1.8-4-4-4H13l-3.5 4H4v4z"/>
-          <!-- Train wheels -->
-          <circle cx="8.5" cy="24.5" r="1.8" fill="currentColor"/>
-          <circle cx="21.5" cy="24.5" r="1.8" fill="currentColor"/>
-          <!-- Subtle dog silhouette atop / looking ahead -->
-          <path d="M14 14V8.5a2.5 2.5 0 0 1 4.5-1.5l1 1.5 2.5-.5a1.5 1.5 0 0 1 1.8 1.8l-.8 2.2V14"/>
-          <!-- Window stripe -->
-          <line x1="8" y1="18" x2="18" y2="18"/>
+        <!-- Minimalist Cute Paw Icon (Enlarged) -->
+        <svg class="brand-logo-icon" viewBox="0 0 32 32" fill="currentColor">
+          <!-- Main central pad -->
+          <path d="M16 14.5c-4.2 0-7 3.2-7 6.5 0 2.8 2.2 4.5 4.8 4.5 1.5 0 2.2-.8 3.2-.8s1.7.8 3.2.8c2.6 0 4.8-1.7 4.8-4.5 0-3.3-2.8-6.5-7-6.5z"/>
+          <!-- 4 Toe pads -->
+          <ellipse cx="8.5" cy="11.5" rx="2.5" ry="3.5" transform="rotate(-18 8.5 11.5)"/>
+          <ellipse cx="13.2" cy="7.5" rx="2.5" ry="3.8" transform="rotate(-6 13.2 7.5)"/>
+          <ellipse cx="18.8" cy="7.5" rx="2.5" ry="3.8" transform="rotate(6 18.8 7.5)"/>
+          <ellipse cx="23.5" cy="11.5" rx="2.5" ry="3.5" transform="rotate(18 23.5 11.5)"/>
         </svg>
 
         <div class="brand-text">
@@ -837,142 +931,148 @@
   <!-- Hero Header -->
   <section class="hero">
     <div class="container">
-      <div class="hero-pretitle">Viajes sin sorpresas en Renfe</div>
+      <div class="hero-badge">Alta Velocidad Renfe · Coche 7</div>
       <h1 class="hero-title">Viaja en AVE con tu perro grande sin pasar por caja a ciegas.</h1>
       <p class="hero-subtitle">
-        Renfe solo permite 2 perros de 10 a 40 kg por tren (Coche 7). 
+        Renfe solo permite 2 perros de 10 a 40 kg por tren. 
         Consulta qué trenes tienen plaza libre ahora mismo antes de iniciar el proceso de compra.
       </p>
     </div>
   </section>
 
   <!-- Section 1: Pre-Search Live Availability Radar -->
-  <section class="container" id="radarSection">
-    <div class="section-header">
-      <div>
-        <div class="section-title">Plazas Confirmadas en Tiempo Real</div>
-        <div class="section-desc">Trenes con suplemento canino disponible detectados recientemente en los corredores principales.</div>
-      </div>
-      <div class="verified-pill">
-        <span class="pulse-dot"></span>
-        <span id="feedUpdatedText">Actualizado hace unos minutos</span>
-      </div>
-    </div>
-
-    <!-- Corridor Tabs -->
-    <div class="filter-tabs" id="corridorTabs">
-      <button class="filter-tab active" data-corridor="all">Todos los corredores</button>
-      <button class="filter-tab" data-corridor="sevilla">Madrid ➔ Sevilla</button>
-      <button class="filter-tab" data-corridor="barcelona">Madrid ➔ Barcelona</button>
-      <button class="filter-tab" data-corridor="málaga">Madrid ➔ Málaga</button>
-      <button class="filter-tab" data-corridor="valencia">Madrid ➔ Valencia</button>
-    </div>
-
-    <!-- Cards Grid -->
-    <div class="radar-grid" id="radarGrid">
-      <!-- Injected by JavaScript -->
-    </div>
-  </section>
-
-  <!-- Section 2: Custom Search (Tesla Form) -->
-  <section class="container" id="searchSection">
-    <div class="search-section">
-      <div class="search-title-row">
-        <h2 class="search-title">Buscar en cualquier fecha y ruta</h2>
-        <p class="search-subtitle">Introduce tu origen, destino y fecha para comprobar el tren exacto en Renfe.</p>
+  <div class="radar-section-wrapper" id="radarSection">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span>Plazas Confirmadas en Tiempo Real</span>
+          </h2>
+          <div class="section-desc">Trenes con suplemento canino disponible detectados recientemente en los corredores principales.</div>
+        </div>
+        <div class="verified-pill">
+          <span class="pulse-dot"></span>
+          <span id="feedUpdatedText">Actualizado hace unos minutos</span>
+        </div>
       </div>
 
-      <form class="search-form" id="searchForm">
-        <!-- Origin -->
-        <div class="field-group">
-          <label class="field-label" for="originInput">Origen</label>
-          <div class="input-wrapper">
-            <input type="text" id="originInput" class="input-field" placeholder="Madrid (Atocha)..." autocomplete="off" value="MADRID-PUERTA DE ATOCHA" data-code="60000" required>
-            <div class="autocomplete-list" id="originList"></div>
+      <!-- Corridor Tabs -->
+      <div class="filter-tabs" id="corridorTabs">
+        <button class="filter-tab active" data-corridor="all">Todos los corredores</button>
+        <button class="filter-tab" data-corridor="sevilla">Madrid ➔ Sevilla</button>
+        <button class="filter-tab" data-corridor="barcelona">Madrid ➔ Barcelona</button>
+        <button class="filter-tab" data-corridor="málaga">Madrid ➔ Málaga</button>
+        <button class="filter-tab" data-corridor="valencia">Madrid ➔ Valencia</button>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="radar-grid" id="radarGrid">
+        <!-- Injected by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Custom Search (High Contrast Card) -->
+  <div class="search-section-wrapper" id="searchSection">
+    <div class="container">
+      <div class="search-card-elevated">
+        <div class="search-title-row">
+          <h2 class="search-title">Buscar en cualquier fecha y ruta</h2>
+          <p class="search-subtitle">Introduce tu origen, destino y fecha para comprobar el tren exacto en Renfe.</p>
+        </div>
+
+        <form class="search-form" id="searchForm">
+          <!-- Origin -->
+          <div class="field-group">
+            <label class="field-label" for="originInput">Origen</label>
+            <div class="input-wrapper">
+              <input type="text" id="originInput" class="input-field" placeholder="Madrid (Atocha)..." autocomplete="off" value="MADRID-PUERTA DE ATOCHA" data-code="60000" required>
+              <div class="autocomplete-list" id="originList"></div>
+            </div>
           </div>
-        </div>
 
-        <!-- Destination -->
-        <div class="field-group">
-          <label class="field-label" for="destInput">Destino</label>
-          <div class="input-wrapper">
-            <input type="text" id="destInput" class="input-field" placeholder="Sevilla (Santa Justa)..." autocomplete="off" value="SEVILLA-SANTA JUSTA" data-code="51003" required>
-            <div class="autocomplete-list" id="destList"></div>
+          <!-- Destination -->
+          <div class="field-group">
+            <label class="field-label" for="destInput">Destino</label>
+            <div class="input-wrapper">
+              <input type="text" id="destInput" class="input-field" placeholder="Sevilla (Santa Justa)..." autocomplete="off" value="SEVILLA-SANTA JUSTA" data-code="51003" required>
+              <div class="autocomplete-list" id="destList"></div>
+            </div>
           </div>
-        </div>
 
-        <!-- Date -->
-        <div class="field-group">
-          <label class="field-label" for="dateInput">Fecha de viaje</label>
-          <input type="date" id="dateInput" class="input-field" required>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="btn-search" id="searchBtn">
-          <span>Consultar plazas</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </form>
-
-      <!-- Date shortcuts -->
-      <div class="date-shortcuts">
-        <span style="font-size: 12px; color: var(--text-tertiary);">Atajos rápidos:</span>
-        <button type="button" class="shortcut-btn" id="shortcutTue2w">Próximo martes con plaza</button>
-        <button type="button" class="shortcut-btn" id="shortcutWed2w">Miércoles en 2 semanas</button>
-        <button type="button" class="shortcut-btn" id="shortcutWed3w">Miércoles en 3 semanas</button>
-      </div>
-
-      <!-- Live Search Results -->
-      <div id="resultsSection">
-        <div class="progress-box" id="progressBox">
-          <div class="spinner"></div>
-          <div>
-            <div style="font-weight: 600; color: var(--text-main);" id="progressTitle">Conectando con el radar de Renfe...</div>
-            <div style="font-size: 13px; color: var(--text-muted);" id="progressDetail">Comprobando disponibilidad de Coche 7 para cada tren...</div>
+          <!-- Date -->
+          <div class="field-group">
+            <label class="field-label" for="dateInput">Fecha de viaje</label>
+            <input type="date" id="dateInput" class="input-field" required>
           </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-search" id="searchBtn">
+            <span>Consultar plazas</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </form>
+
+        <!-- Date shortcuts -->
+        <div class="date-shortcuts">
+          <span style="font-size: 13px; font-weight: 600; color: var(--text-tertiary);">Fechas con mayor disponibilidad:</span>
+          <button type="button" class="shortcut-btn" id="shortcutTue2w">Próximo martes</button>
+          <button type="button" class="shortcut-btn" id="shortcutWed2w">Miércoles en 2 semanas</button>
+          <button type="button" class="shortcut-btn" id="shortcutWed3w">Miércoles en 3 semanas</button>
         </div>
 
-        <div class="results-list" id="resultsList"></div>
+        <!-- Live Search Results -->
+        <div id="resultsSection">
+          <div class="progress-box" id="progressBox">
+            <div class="spinner"></div>
+            <div>
+              <div style="font-weight: 700; color: var(--text-main);" id="progressTitle">Conectando con el radar de Renfe...</div>
+              <div style="font-size: 13px; color: var(--text-muted);" id="progressDetail">Comprobando disponibilidad de Coche 7 para cada tren...</div>
+            </div>
+          </div>
+
+          <div class="results-list" id="resultsList"></div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Section 3: Essential Tips -->
+  <!-- Section 3: Essential Tips (Distinct Color Accents) -->
   <section class="container tips-section" id="tipsSection">
     <div class="section-header">
       <div>
-        <div class="section-title">Consejos Clave de Disponibilidad</div>
+        <h2 class="section-title">Consejos Clave de Disponibilidad</h2>
         <div class="section-desc">Cómo funciona el sistema de suplemento de perro grande en Renfe.</div>
       </div>
     </div>
 
     <div class="tips-grid">
-      <div class="tip-card">
-        <div class="tip-number">Regla 01</div>
+      <div class="tip-card tip-amber">
+        <span class="tip-badge">Regla 01</span>
         <div class="tip-title">Corte estricto de 24 horas</div>
         <div class="tip-text">
           Renfe desactiva automáticamente el suplemento canino en el sistema 24 horas antes de la salida, incluso aunque queden las 2 plazas libres. Compra siempre con antelación.
         </div>
       </div>
 
-      <div class="tip-card">
-        <div class="tip-number">Regla 02</div>
+      <div class="tip-card tip-blue">
+        <span class="tip-badge">Regla 02</span>
         <div class="tip-title">Solo 2 perros por convoy</div>
         <div class="tip-text">
           Solo existen 2 plazas para perros de 10 a 40 kg por tren (ubicadas exclusivamente en el Coche 7, asientos H1 y H2 en trenes AVE S-103 y S-112). En cuanto dos viajeros las reservan, queda agotado.
         </div>
       </div>
 
-      <div class="tip-card">
-        <div class="tip-number">Regla 03</div>
+      <div class="tip-card tip-red">
+        <span class="tip-badge">Regla 03</span>
         <div class="tip-title">La trampa del Coche Silencio</div>
         <div class="tip-text">
           El billete requerido es la tarifa <em>Elige Estándar</em>. Pero si el algoritmo de Renfe te preasigna plaza en un coche silencioso, el suplemento se inhabilita porque no se admiten mascotas allí.
         </div>
       </div>
 
-      <div class="tip-card">
-        <div class="tip-number">Regla 04</div>
+      <div class="tip-card tip-green">
+        <span class="tip-badge">Regla 04</span>
         <div class="tip-title">Ventana de cancelaciones</div>
         <div class="tip-text">
           Entre 48 y 72 horas antes de la salida suelen liberarse billetes con plaza de perro por cambios de billete Puente AVE o corporativos. Si no encontrabas sitio, revisa en esa ventana.
@@ -982,12 +1082,14 @@
   </section>
 
   <!-- Footer -->
-  <footer class="container footer">
-    <div>
-      <strong>Patas al Tren</strong> · Proyecto independiente sin afiliación con Renfe o ADIF.
-    </div>
-    <div>
-      <a href="https://github.com/lexisphoenix/canitren" target="_blank" rel="noopener">Código en GitHub</a>
+  <footer class="footer">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <div>
+        <strong>Patas al Tren</strong> · Proyecto independiente sin afiliación con Renfe o ADIF.
+      </div>
+      <div>
+        <a href="https://github.com/lexisphoenix/canitren" target="_blank" rel="noopener">Código en GitHub</a>
+      </div>
     </div>
   </footer>
 
@@ -1046,8 +1148,7 @@
         if (!res.ok) throw new Error('API error');
         allRadarTrains = await res.json();
       } catch (err) {
-        console.warn('Could not fetch /api/radar, using local seed fallback', err);
-        // Fallback seed
+        console.warn('Could not fetch /api/radar, using local feed fallback', err);
         const w2 = getFutureDate(14, 3);
         const t2 = getFutureDate(13, 2);
         allRadarTrains = [
@@ -1169,8 +1270,8 @@
 
       if (filtered.length === 0) {
         radarGrid.innerHTML = `
-          <div style="grid-column: 1 / -1; padding: 32px; text-align: center; color: var(--text-muted); background: var(--bg-surface); border-radius: var(--radius-md);">
-            No hay trenes con plazas libres registradas en este corredor ahora mismo. Prueba con el buscador directo para otra fecha.
+          <div style="grid-column: 1 / -1; padding: 36px; text-align: center; color: var(--text-muted); background: var(--bg-surface); border-radius: var(--radius-md); border: 1.5px solid var(--border-light);">
+            No hay trenes con plazas libres registradas en este corredor en las fechas del radar. Prueba con el buscador directo para cualquier otra fecha.
           </div>
         `;
         return;
@@ -1242,7 +1343,6 @@
       destInput.dataset.code = destCode;
       dateInput.value = date;
 
-      // Scroll to search section and trigger search
       document.getElementById('searchSection').scrollIntoView({ behavior: 'smooth' });
       triggerSearch();
     };
@@ -1278,7 +1378,7 @@
           } catch (e) {
             console.error('Autocomplete error', e);
           }
-        }, 250);
+        }, 220);
       });
 
       list.addEventListener('click', (e) => {
@@ -1322,7 +1422,7 @@
       resultsList.innerHTML = '';
       progressBox.style.display = 'flex';
       progressTitle.textContent = `Consultando trenes ${originInput.value} ➔ ${destInput.value}...`;
-      progressDetail.textContent = `Fecha seleccionada: ${date} · Conectando con Renfe...`;
+      progressDetail.textContent = `Fecha: ${date} · Comprobando disponibilidad de Coche 7 en Renfe...`;
       searchBtn.disabled = true;
 
       const url = `/api/search?origin=${encodeURIComponent(originCode)}&destination=${encodeURIComponent(destCode)}&date=${encodeURIComponent(date)}`;
@@ -1350,7 +1450,7 @@
         currentEventSource.close();
         if (resultsList.children.length === 0) {
           resultsList.innerHTML = `
-            <div style="padding: 32px; text-align: center; color: var(--text-muted); background: #FFFFFF; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+            <div style="padding: 32px; text-align: center; color: var(--text-muted); background: #FFFFFF; border-radius: var(--radius-md); border: 1.5px solid var(--border-light);">
               No se encontraron trenes que admitan perros grandes para esta ruta y fecha.
             </div>
           `;
@@ -1364,7 +1464,7 @@
         currentEventSource.close();
         if (resultsList.children.length === 0) {
           resultsList.innerHTML = `
-            <div style="padding: 24px; text-align: center; color: var(--sold-red-text); background: var(--sold-red-bg); border-radius: var(--radius-md);">
+            <div style="padding: 24px; text-align: center; color: var(--sold-red-text); background: var(--sold-red-bg); border-radius: var(--radius-md); border: 1px solid var(--sold-red-border);">
               Error al consultar Renfe o tiempo de espera agotado. Por favor, inténtalo de nuevo.
             </div>
           `;
@@ -1419,10 +1519,10 @@
         </div>
 
         <div style="text-align: right;">
-          <div style="font-weight: 700; color: var(--text-main); font-size: 17px;">
+          <div style="font-weight: 800; color: var(--text-main); font-size: 18px;">
             ${train.price ? train.price.toFixed(2) + ' €' : '-'}
           </div>
-          <div style="font-size: 12px; color: var(--text-muted);">
+          <div style="font-size: 12px; font-weight: 600; color: var(--text-tertiary);">
             ${isAvail ? '+40 € suplemento' : ''}
           </div>
         </div>
@@ -1434,7 +1534,7 @@
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
           ` : `
-            <button class="btn-card" style="background: var(--bg-surface); color: var(--text-muted); cursor: not-allowed;" disabled>
+            <button class="btn-card" style="background: var(--bg-surface); color: var(--text-light); border: 1px solid var(--border-light); cursor: not-allowed;" disabled>
               Agotado
             </button>
           `}
