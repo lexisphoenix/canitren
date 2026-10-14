@@ -62,6 +62,17 @@ async def api_radar(corridor: Optional[str] = Query(None, description="Filter co
     return get_radar_feed(corridor)
 
 
+# ─── Hourly Vercel Cron ──────────────────────────────────────────────
+
+@router.get("/cron")
+async def api_cron():
+    """Vercel cron endpoint called every hour to refresh and verify the radar feed."""
+    from ..radar import _generate_default_feed, save_radar_feed
+    fresh_feed = _generate_default_feed()
+    save_radar_feed(fresh_feed)
+    return {"status": "ok", "message": "Radar feed refreshed", "total_trains": len(fresh_feed)}
+
+
 # ─── Dog availability search (SSE) ──────────────────────────────────
 
 @router.get("/search")
