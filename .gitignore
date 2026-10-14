@@ -1,0 +1,21 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Node / Vercel
+node_modules/
+.vercel/
+
+# Temporary / Screenshots
+/tmp/
+*.png
+*.html.bak
+
+# OS
+.DS_Store
+.env
+.env.local
