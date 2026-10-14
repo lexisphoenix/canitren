@@ -21,38 +21,38 @@
        ========================================================================== */
     :root {
       --bg-base: #FFFFFF;
-      --bg-hero: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
-      --bg-surface: #F8FAFC;
-      --bg-subtle: #F1F5F9;
+      --bg-hero: linear-gradient(180deg, #FFF6F3 0%, #FFFFFF 100%);
+      --bg-surface: #FAF7F5;
+      --bg-subtle: #F6EFEB;
       --bg-card: #FFFFFF;
 
-      /* High-Contrast Borders */
-      --border-light: #E2E8F0;
-      --border-medium: #CBD5E1;
-      --border-strong: #94A3B8;
-      --border-dark: #0F172A;
+      /* Soft High-Contrast Borders */
+      --border-light: #ECE4E0;
+      --border-medium: #DCD0CA;
+      --border-strong: #948A85;
+      --border-dark: #2B211E;
 
       /* Typography */
-      --text-main: #0F172A;       /* Deep slate obsidian */
-      --text-muted: #334155;      /* Slate secondary */
-      --text-tertiary: #64748B;   /* Medium label */
-      --text-light: #94A3B8;
+      --text-main: #241A17;       /* Deep warm graphite obsidian */
+      --text-muted: #4F433E;      /* Warm secondary */
+      --text-tertiary: #7D6E68;   /* Medium label */
+      --text-light: #A39690;
 
       /* Primary Accents */
-      --accent-black: #0F172A;
-      --accent-hover: #1E293B;
+      --accent-black: #241A17;
+      --accent-hover: #382B27;
       --accent-blue: #2563EB;
       --accent-blue-subtle: #EFF6FF;
-      --accent-amber: #D97706;
+      --accent-amber: #C26300;
       --accent-amber-subtle: #FEF3C7;
-      --accent-red: #DC2626;
+      --accent-red: #C53030;
 
-      /* Joyful Red-Orange Button Palette */
-      --btn-joyful: #FF5A36;
-      --btn-joyful-hover: #E84522;
-      --btn-joyful-active: #D43816;
-      --btn-joyful-shadow: 0 4px 14px rgba(255, 90, 54, 0.35);
-      --btn-joyful-shadow-hover: 0 6px 20px rgba(255, 90, 54, 0.45);
+      /* Warm Coral Button Palette (Tasteful, joyful, no neon glow) */
+      --btn-joyful: #DE593D;
+      --btn-joyful-hover: #C9452B;
+      --btn-joyful-active: #B53B23;
+      --btn-joyful-shadow: 0 2px 6px rgba(222, 89, 61, 0.22);
+      --btn-joyful-shadow-hover: 0 4px 10px rgba(222, 89, 61, 0.28);
 
       /* Availability Indicators */
       --avail-green-bg: #ECFDF5;
@@ -114,16 +114,16 @@
 
     /* Top Announcement Bar */
     .top-bar {
-      border-bottom: 1px solid var(--border-light);
+      border-bottom: 1px solid #F5EAE6;
       font-size: 12px;
-      color: var(--text-muted);
+      color: #7D6E68;
       padding: 9px 0;
       text-align: center;
-      background: #F8FAFC;
+      background: #FFF7F4;
       letter-spacing: 0.01em;
     }
     .top-bar strong {
-      color: var(--text-main);
+      color: #241A17;
       font-weight: 700;
     }
 
@@ -258,16 +258,16 @@
       align-items: center;
       gap: 6px;
       background: #FFFFFF;
-      border: 1px solid var(--border-medium);
+      border: 1px solid #ECD9D3;
       padding: 5px 14px;
       border-radius: var(--radius-pill);
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--text-muted);
+      color: #9E4530;
       margin-bottom: 16px;
-      box-shadow: var(--shadow-subtle);
+      box-shadow: 0 1px 3px rgba(36, 26, 23, 0.04);
     }
 
     .hero-title {
@@ -509,16 +509,16 @@
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.15s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 3px 10px rgba(255, 90, 54, 0.28);
+      box-shadow: var(--btn-joyful-shadow);
     }
     .btn-card:hover {
       background: var(--btn-joyful-hover);
-      transform: translateY(-1.5px);
-      box-shadow: var(--btn-joyful-shadow);
+      transform: translateY(-1px);
+      box-shadow: var(--btn-joyful-shadow-hover);
     }
     .btn-card:active {
       background: var(--btn-joyful-active);
@@ -647,7 +647,7 @@
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.15s ease;
       white-space: nowrap;
       display: inline-flex;
       align-items: center;
@@ -657,7 +657,7 @@
     }
     .btn-search:hover {
       background: var(--btn-joyful-hover);
-      transform: translateY(-2px);
+      transform: translateY(-1px);
       box-shadow: var(--btn-joyful-shadow-hover);
     }
     .btn-search:active {
@@ -689,9 +689,9 @@
       transition: all 0.15s ease;
     }
     .shortcut-btn:hover {
-      background: #FFF5F2;
-      border-color: #FF8B70;
-      color: #D43816;
+      background: #FFF7F4;
+      border-color: #E29B8B;
+      color: #B53B23;
     }
 
     /* Live Search Results Container */
@@ -702,30 +702,171 @@
       border-top: 1.5px solid var(--border-light);
     }
 
+    /* Enhanced Live Search Progress Box (Prominent & Lively) */
     .progress-box {
-      background: #FFFFFF;
-      border: 1.5px solid var(--border-medium);
-      border-radius: var(--radius-md);
-      padding: 20px 24px;
-      margin-bottom: 20px;
+      background: #FFF9F7;
+      border: 1.5px solid #F3DFD8;
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
-      gap: 16px;
-      box-shadow: var(--shadow-subtle);
+      gap: 24px;
+      box-shadow: 0 2px 10px rgba(222, 89, 61, 0.05);
+      position: relative;
+      overflow: hidden;
     }
 
-    .spinner {
-      width: 22px;
-      height: 22px;
-      border: 2.5px solid var(--border-light);
-      border-top-color: var(--accent-black);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+    .loading-visual {
+      position: relative;
+      width: 76px;
+      height: 76px;
       flex-shrink: 0;
+      background: #FFFFFF;
+      border: 1.5px solid #F0D7CF;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(36, 26, 23, 0.04);
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    .train-anim-track {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .train-mover {
+      animation: trainGlide 2.4s ease-in-out infinite alternate;
+    }
+
+    @keyframes trainGlide {
+      0% {
+        transform: translateX(-4px) translateY(0);
+      }
+      50% {
+        transform: translateX(4px) translateY(-1px);
+      }
+      100% {
+        transform: translateX(-4px) translateY(0);
+      }
+    }
+
+    .train-icon-svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .sonar-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid #DE593D;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .sonar-1 {
+      width: 44px;
+      height: 44px;
+      animation: sonarPulse 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+    }
+    .sonar-2 {
+      width: 44px;
+      height: 44px;
+      animation: sonarPulse 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite 0.75s;
+    }
+
+    @keyframes sonarPulse {
+      0% {
+        transform: scale(0.6);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
+    }
+
+    .progress-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .progress-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFFFFF;
+      border: 1px solid #ECD4CD;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 700;
+      color: #DE593D;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .live-blink-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #DE593D;
+      animation: blinkDot 1.4s ease-in-out infinite;
+    }
+
+    @keyframes blinkDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.85); }
+    }
+
+    .progress-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    .progress-detail {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .progress-track-wrapper {
+      width: 100%;
+      height: 5px;
+      background: #F0E1DC;
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .progress-track-bar {
+      height: 100%;
+      width: 35%;
+      background: #DE593D;
+      border-radius: var(--radius-pill);
+      animation: progressSlide 1.8s ease-in-out infinite;
+    }
+
+    @keyframes progressSlide {
+      0% {
+        transform: translateX(-100%);
+      }
+      50% {
+        transform: translateX(180%);
+      }
+      100% {
+        transform: translateX(360%);
+      }
     }
 
     .results-list {
@@ -853,10 +994,10 @@
       bottom: 0;
       width: 5px;
     }
-    .tip-vertical-card.tip-amber::before { background: var(--accent-amber); }
-    .tip-vertical-card.tip-blue::before { background: var(--accent-blue); }
-    .tip-vertical-card.tip-rose::before { background: #F43F5E; }
-    .tip-vertical-card.tip-green::before { background: var(--avail-green-dot); }
+    .tip-vertical-card.tip-amber::before { background: #D97706; }
+    .tip-vertical-card.tip-blue::before { background: #475569; }
+    .tip-vertical-card.tip-rose::before { background: #DE593D; }
+    .tip-vertical-card.tip-green::before { background: #059669; }
 
     .tip-illustration-box {
       width: 88px;
@@ -869,11 +1010,11 @@
       transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .tip-vertical-card:hover .tip-illustration-box {
-      transform: scale(1.06) rotate(-2deg);
+      transform: scale(1.05) rotate(-2deg);
     }
     .tip-amber .tip-illustration-box { background: #FFFBEB; border: 1.5px solid #FDE68A; }
-    .tip-blue .tip-illustration-box { background: #EFF6FF; border: 1.5px solid #BFDBFE; }
-    .tip-rose .tip-illustration-box { background: #FFF1F2; border: 1.5px solid #FECDD3; }
+    .tip-blue .tip-illustration-box { background: #F8FAFC; border: 1.5px solid #E2E8F0; }
+    .tip-rose .tip-illustration-box { background: #FFF7F4; border: 1.5px solid #F3DFD8; }
     .tip-green .tip-illustration-box { background: #ECFDF5; border: 1.5px solid #A7F3D0; }
 
     .tip-art-svg {
@@ -904,10 +1045,10 @@
       padding: 4px 10px;
       border-radius: var(--radius-pill);
     }
-    .tip-amber .tip-badge { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
-    .tip-blue .tip-badge { background: #DBEAFE; color: #1E40AF; border: 1px solid #BFDBFE; }
-    .tip-rose .tip-badge { background: #FFE4E6; color: #BE123C; border: 1px solid #FECDD3; }
-    .tip-green .tip-badge { background: #D1FAE5; color: #065F46; border: 1px solid #A7F3D0; }
+    .tip-amber .tip-badge { background: #FEF3C7; color: #9A3412; border: 1px solid #FDE68A; }
+    .tip-blue .tip-badge { background: #F1F5F9; color: #334155; border: 1px solid #CBD5E1; }
+    .tip-rose .tip-badge { background: #FFF7F4; color: #B53B23; border: 1px solid #F5D3CA; }
+    .tip-green .tip-badge { background: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; }
 
     .tip-title {
       font-size: 18px;
@@ -931,10 +1072,13 @@
       padding: 5px 14px;
       border-radius: var(--radius-pill);
       font-size: 12px;
-      font-weight: 600;
       background: var(--bg-surface);
       color: var(--text-main);
       border: 1px solid var(--border-light);
+    }
+    .tip-highlight-pill strong {
+      color: #DE593D;
+      font-weight: 700;
     }
 
     /* Footer */
@@ -946,7 +1090,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #F8FAFC;
+      background: var(--bg-surface);
     }
     .footer a {
       color: var(--text-muted);
@@ -972,6 +1116,12 @@
       }
       .radar-grid {
         grid-template-columns: 1fr;
+      }
+      .progress-box {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 20px;
+        gap: 18px;
       }
       .tip-vertical-card {
         flex-direction: column;
@@ -1097,10 +1247,35 @@
         <!-- Live Search Results -->
         <div id="resultsSection">
           <div class="progress-box" id="progressBox">
-            <div class="spinner"></div>
-            <div>
-              <div style="font-weight: 700; color: var(--text-main);" id="progressTitle">Conectando con el radar de Renfe...</div>
-              <div style="font-size: 13px; color: var(--text-muted);" id="progressDetail">Comprobando disponibilidad de Coche 7 para cada tren...</div>
+            <div class="loading-visual">
+              <div class="train-anim-track">
+                <div class="train-mover">
+                  <svg class="train-icon-svg" viewBox="0 0 36 36" fill="none">
+                    <rect x="4" y="8" width="28" height="18" rx="5" fill="#DE593D"/>
+                    <rect x="7" y="11" width="10" height="7" rx="2" fill="#FFFFFF" fill-opacity="0.9"/>
+                    <rect x="19" y="11" width="10" height="7" rx="2" fill="#FFFFFF" fill-opacity="0.9"/>
+                    <circle cx="10" cy="23" r="1.5" fill="#FFFFFF"/>
+                    <circle cx="26" cy="23" r="1.5" fill="#FFFFFF"/>
+                    <rect x="8" y="26" width="20" height="2" rx="1" fill="#7D6E68"/>
+                    <circle cx="9" cy="29" r="2.5" fill="#241A17"/>
+                    <circle cx="27" cy="29" r="2.5" fill="#241A17"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="sonar-ring sonar-1"></div>
+              <div class="sonar-ring sonar-2"></div>
+            </div>
+
+            <div class="progress-content">
+              <div class="progress-status-badge">
+                <span class="live-blink-dot"></span>
+                <span>Radar en directo</span>
+              </div>
+              <div class="progress-title" id="progressTitle">Conectando con el radar de Renfe...</div>
+              <div class="progress-detail" id="progressDetail">Comprobando disponibilidad de Coche 7 para cada tren...</div>
+              <div class="progress-track-wrapper">
+                <div class="progress-track-bar"></div>
+              </div>
             </div>
           </div>
 
@@ -1181,8 +1356,8 @@
             Renfe desactiva automáticamente el suplemento canino en el sistema <strong>exactamente 24 horas antes</strong> de la salida de la cabecera, aunque los 2 asientos caninos estén totalmente vacíos. Compra siempre antes del límite de las 24h.
           </div>
           <div class="tip-highlight-pill">
-            <span>⏱️</span>
-            <span>Recomendación: Reserva con al menos 48h de margen para no quedarte bloqueado por el sistema.</span>
+            <strong>Recomendación:</strong>
+            <span>Reserva con al menos 48h de margen para no quedarte bloqueado por el sistema.</span>
           </div>
         </div>
       </div>
@@ -1216,8 +1391,8 @@
             Por normativa de seguridad de Renfe, solo se autorizan <strong>2 perros de 10 a 40 kg</strong> por tren. Están asignados a asientos específicos con funda especial y kit de viaje (H1 y H2 en trenes AVE S-103 y S-112). En cuanto dos viajeros los compran, el tren se marca como agotado.
           </div>
           <div class="tip-highlight-pill">
-            <span>🐾</span>
-            <span>Ubicación: Asientos adaptados con espacio reservado en el suelo junto a tu butaca.</span>
+            <strong>Ubicación:</strong>
+            <span>Asientos adaptados con espacio reservado en el suelo junto a tu butaca.</span>
           </div>
         </div>
       </div>
@@ -1252,8 +1427,8 @@
             El billete base necesario es la tarifa <em>Elige Estándar</em>. Sin embargo, si al reservar el selector de plazas de Renfe te preasigna automáticamente en un Coche en Silencio, el suplemento canino aparecerá inhabilitado ("No disponible") porque las mascotas están expresamente prohibidas en esos coches.
           </div>
           <div class="tip-highlight-pill">
-            <span>🤫</span>
-            <span>Solución: Cambia de asiento manualmente a Coche 7 para desbloquear el suplemento de 40 €.</span>
+            <strong>Solución:</strong>
+            <span>Cambia de asiento manualmente a Coche 7 para desbloquear el suplemento de 40 €.</span>
           </div>
         </div>
       </div>
@@ -1288,8 +1463,8 @@
             Muchos billetes corporativos y tarifas Puente AVE se anulan o modifican entre 2 y 3 días antes del viaje. Es habitual que trenes que llevaban semanas agotados vuelvan a mostrar 1 o 2 plazas para perro grande en esa ventana temporal.
           </div>
           <div class="tip-highlight-pill">
-            <span>🔍</span>
-            <span>Consejo: Si tu tren favorito estaba agotado, revísalo en nuestro radar exactamente 2 o 3 días antes.</span>
+            <strong>Consejo:</strong>
+            <span>Si tu tren favorito estaba agotado, revísalo en nuestro radar exactamente 2 o 3 días antes.</span>
           </div>
         </div>
       </div>
