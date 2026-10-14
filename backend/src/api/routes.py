@@ -19,7 +19,7 @@ from fastapi.responses import StreamingResponse
 
 from ..cache import cache
 from ..stations import search_stations, get_station_name, get_search_term
-from ..scraper import RenfeScraper, SearchResult, TrainResult, DogAvailability
+from ..scraper import RenfeScraper, SearchResult, TrainResult, DogAvailability, PLAYWRIGHT_AVAILABLE
 from ..config import config
 
 router = APIRouter()
@@ -110,8 +110,8 @@ async def api_search(
                 },
             )
 
-    # If mock requested
-    if is_mock:
+    # If mock requested or headless scraper is not available in environment (e.g. serverless cloud)
+    if is_mock or not PLAYWRIGHT_AVAILABLE:
         return StreamingResponse(
             _sse_mock_stream(origin_name, destination_name, date, request),
             media_type="text/event-stream",
