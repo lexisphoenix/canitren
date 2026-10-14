@@ -10,6 +10,9 @@ if str(root_dir) not in sys.path:
 from backend.src.main import app as fastapi_app
 
 
+from urllib.parse import parse_qs, urlencode
+
+
 class VercelPathFixMiddleware:
     """Fix ASGI scope['path'] when Vercel rewrites requests to /api/index.py."""
 
@@ -21,16 +24,26 @@ class VercelPathFixMiddleware:
 
     async def __call__(self, scope, receive, send):
         if scope["type"] == "http":
-            headers = dict(scope.get("headers", []))
-            matched_path = (
-                headers.get(b"x-matched-path", b"")
-                or headers.get(b"x-forwarded-uri", b"")
-            ).decode("latin1")
+            qs = scope.get("query_string", b"").decode("latin1")
+            params = parse_qs(qs, keep_blank_values=True)
 
-            current_path = scope.get("path", "")
-            if matched_path and ("index.py" in current_path or current_path in ("/api", "/api/")):
-                clean_path = matched_path.split("?")[0]
-                scope["path"] = clean_path
+            if "__path" in params:
+                subpath = params.pop("__path")[0].lstrip("/")
+                scope["path"] = f"/api/{subpath}"
+                scope["raw_path"] = f"/api/{subpath}".encode("latin1")
+                # Rebuild query string without __path
+                scope["query_string"] = urlencode(params, doseq=True).encode("latin1")
+            else:
+                headers = dict(scope.get("headers", []))
+                matched_path = (
+                    headers.get(b"x-matched-path", b"")
+                    or headers.get(b"x-forwarded-uri", b"")
+                ).decode("latin1")
+
+                current_path = scope.get("path", "")
+                if matched_path and ("index.py" in current_path or current_path in ("/api", "/api/")):
+                    clean_path = matched_path.split("?")[0]
+                    scope["path"] = clean_path
 
         await self.app(scope, receive, send)
 
