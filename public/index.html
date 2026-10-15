@@ -353,47 +353,182 @@
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
     }
 
-    /* Radar Cards Grid */
-    .radar-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    /* Radar Day-by-Day Calendar View */
+    .radar-days-container {
+      display: flex;
+      flex-direction: column;
       gap: 20px;
     }
 
-    .radar-card {
-      background: var(--bg-card);
+    .radar-day-card {
+      background: #FFFFFF;
       border: 1.5px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: 24px;
+      border-radius: var(--radius-xl);
+      padding: 24px 28px;
       box-shadow: var(--shadow-card);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
-    .radar-card:hover {
-      transform: translateY(-3px);
+    .radar-day-card:hover {
+      border-color: var(--border-medium);
       box-shadow: var(--shadow-card-hover);
-      border-color: var(--border-strong);
     }
 
-    .card-top {
+    .day-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1.5px solid var(--border-light);
     }
 
-    .route-pill {
+    /* 1. LA FECHA: Lo más importante */
+    .day-date-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .day-calendar-badge {
+      width: 46px;
+      height: 48px;
+      background: #FFF7F4;
+      border: 1.5px solid #F5D3CA;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .day-cal-month {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #DE593D;
+      line-height: 1;
+      letter-spacing: 0.06em;
+    }
+    .day-cal-num {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .day-title-text {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+    .day-subtitle-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+    }
+
+    .day-count-badge {
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.02em;
-      color: #1E40AF;
-      background: #EFF6FF;
-      padding: 5px 12px;
-      border-radius: var(--radius-sm);
-      border: 1px solid #BFDBFE;
+      color: #9E4530;
+      background: #FFF7F4;
+      border: 1px solid #F5DDD6;
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+    }
+
+    /* Train Slots List */
+    .day-slots-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .radar-slot-row {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: 180px 1fr 190px auto;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .radar-slot-row:hover {
+      background: #FFFFFF;
+      border-color: var(--border-strong);
+      transform: translateX(4px);
+      box-shadow: 0 4px 14px rgba(36, 26, 23, 0.07);
+    }
+
+    /* 2. LA HORA: Segundo más importante */
+    .slot-time {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .slot-time-large {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+    }
+    .slot-time-arr {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+    }
+
+    .slot-route {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .slot-corridor-badge {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: #FFFFFF;
+      border: 1px solid var(--border-medium);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+    }
+
+    /* 3. PLAZAS DISPONIBLES DE PERRO */
+    .slot-spots-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--avail-green-bg);
+      color: var(--avail-green-text);
+      border: 1.5px solid var(--avail-green-border);
+      width: fit-content;
+    }
+
+    .slot-action-prompt {
+      font-size: 13px;
+      font-weight: 700;
+      color: #DE593D;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 14px;
+      background: #FFFFFF;
+      border: 1px solid #F5DDD6;
+      border-radius: var(--radius-pill);
+      transition: all 0.15s ease;
+    }
+    .radar-slot-row:hover .slot-action-prompt {
+      background: #DE593D;
+      color: #FFFFFF;
+      border-color: #DE593D;
     }
 
     .verified-pill {
@@ -403,87 +538,6 @@
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .card-body {
-      margin-bottom: 18px;
-    }
-
-    .card-date {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-      text-transform: capitalize;
-    }
-
-    .card-times {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .time-large {
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--text-main);
-    }
-
-    .time-arrow {
-      color: var(--text-tertiary);
-      font-size: 18px;
-    }
-
-    .card-duration {
-      font-size: 13px;
-      color: var(--text-tertiary);
-      font-weight: 600;
-      margin-left: auto;
-    }
-
-    .card-train-details {
-      font-size: 13px;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 500;
-    }
-
-    .train-badge {
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .card-pricing {
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border-light);
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-    }
-
-    .price-main {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-    .price-addon {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--text-tertiary);
-      margin-left: 4px;
-    }
-
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-top: 16px;
     }
 
     .avail-badge {
@@ -497,6 +551,161 @@
       background: var(--avail-green-bg);
       color: var(--avail-green-text);
       border: 1.5px solid var(--avail-green-border);
+    }
+
+    /* Train Detail Modal Popup */
+    .train-modal {
+      border: none;
+      border-radius: var(--radius-xl);
+      padding: 0;
+      background: transparent;
+      max-width: 520px;
+      width: 90vw;
+      box-shadow: 0 20px 60px rgba(36, 26, 23, 0.28);
+      margin: auto;
+    }
+    .train-modal::backdrop {
+      background: rgba(36, 26, 23, 0.55);
+      backdrop-filter: blur(6px);
+    }
+    .modal-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .modal-close-btn:hover {
+      background: #FFF7F4;
+      border-color: #E29B8B;
+      color: #B53B23;
+    }
+    .modal-header {
+      padding-right: 36px;
+    }
+    .modal-tag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #DE593D;
+      margin-bottom: 4px;
+    }
+    .modal-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+    .modal-route {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+    .modal-spots-banner {
+      background: var(--avail-green-bg);
+      border: 1.5px solid var(--avail-green-border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--avail-green-text);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .modal-section-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .modal-info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+    .modal-info-label {
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+    .modal-info-value {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+    .modal-price-box {
+      border-top: 1.5px dashed var(--border-medium);
+      padding-top: 12px;
+      margin-top: 4px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    .modal-price-total {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .modal-price-breakdown {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .modal-actions .btn-search {
+      flex: 1;
+      height: 48px;
+      font-size: 14px;
+    }
+    .modal-btn-renfe {
+      flex: 1;
+      height: 48px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-medium);
+      color: var(--text-main);
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .modal-btn-renfe:hover {
+      background: var(--bg-surface);
+      border-color: var(--border-strong);
     }
 
     .btn-card {
@@ -1114,8 +1323,13 @@
         grid-template-columns: 1fr;
         gap: 10px;
       }
-      .radar-grid {
+      .radar-slot-row {
         grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 16px;
+      }
+      .modal-actions {
+        flex-direction: column;
       }
       .progress-box {
         flex-direction: column;
@@ -1310,8 +1524,8 @@
         <button class="filter-tab" data-corridor="valencia">Madrid ➔ Valencia</button>
       </div>
 
-      <!-- Cards Grid -->
-      <div class="radar-grid" id="radarGrid">
+      <!-- Day-by-Day Calendar Container -->
+      <div class="radar-days-container" id="radarGrid">
         <!-- Injected by JavaScript -->
       </div>
     </div>
@@ -1483,6 +1697,62 @@
     </div>
   </footer>
 
+  <!-- Train Detail Modal Popup Window -->
+  <dialog id="trainDetailModal" class="train-modal">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Cerrar ventana">✕</button>
+      
+      <div class="modal-header">
+        <div class="modal-tag">Plaza Confirmada · Renfe AVE</div>
+        <h3 class="modal-title" id="modalTitle">Madrid ➔ Sevilla</h3>
+        <div class="modal-route" id="modalDate">Miércoles, 28 de Octubre de 2026</div>
+      </div>
+
+      <div class="modal-spots-banner" id="modalSpotsBanner">
+        <span class="pulse-dot"></span>
+        <span id="modalSpotsText">2 plazas para perro grande (10-40 kg)</span>
+      </div>
+
+      <div class="modal-section-box">
+        <div class="modal-info-row">
+          <span class="modal-info-label">Horario:</span>
+          <span class="modal-info-value" id="modalTimes">07:30 ➔ 10:10 (2h 40m)</span>
+        </div>
+        <div class="modal-info-row">
+          <span class="modal-info-label">Tren:</span>
+          <span class="modal-info-value" id="modalTrain">AVE 03082</span>
+        </div>
+        <div class="modal-info-row">
+          <span class="modal-info-label">Coche asignado:</span>
+          <span class="modal-info-value" id="modalCoach">Coche 7 · Elige Estándar (H1/H2)</span>
+        </div>
+        <div class="modal-info-row">
+          <span class="modal-info-label">Política de viaje:</span>
+          <span class="modal-info-value">Kit especial Renfe (funda + correa)</span>
+        </div>
+
+        <div class="modal-price-box">
+          <div>
+            <div class="modal-info-label">Total viaje estimado</div>
+            <div class="modal-price-breakdown" id="modalPriceBreakdown">Billete 48.50 € + Suplemento perro 40.00 €</div>
+          </div>
+          <div class="modal-price-total" id="modalTotalPrice">88.50 €</div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-search" id="modalSelectBtn">
+          <span>Buscar este tren</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <a href="https://www.renfe.com/es/es" target="_blank" rel="noopener" class="modal-btn-renfe" id="modalRenfeLink">
+          <span>Reservar en Renfe</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </dialog>
+
   <!-- Logic & Interactions -->
   <script>
     // ── Default State & Elements ──────────────────────────────────────
@@ -1652,6 +1922,25 @@
       renderRadarGrid();
     }
 
+    function formatSpanishDate(dateStr) {
+      try {
+        const [y, m, d] = dateStr.split('-').map(Number);
+        const dateObj = new Date(y, m - 1, d);
+        const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        const monthShorts = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
+        return {
+          fullDate: `${days[dateObj.getDay()]}, ${d} de ${months[m - 1]}`,
+          dayName: days[dateObj.getDay()],
+          dayNum: d,
+          monthShort: monthShorts[m - 1],
+          year: y
+        };
+      } catch (e) {
+        return { fullDate: dateStr, dayName: '', dayNum: '', monthShort: '', year: '' };
+      }
+    }
+
     function renderRadarGrid() {
       let filtered = allRadarTrains;
       if (currentCorridorFilter !== 'all') {
@@ -1660,60 +1949,153 @@
 
       if (filtered.length === 0) {
         radarGrid.innerHTML = `
-          <div style="grid-column: 1 / -1; padding: 36px; text-align: center; color: var(--text-muted); background: var(--bg-surface); border-radius: var(--radius-md); border: 1.5px solid var(--border-light);">
+          <div style="padding: 36px; text-align: center; color: var(--text-muted); background: var(--bg-surface); border-radius: var(--radius-md); border: 1.5px solid var(--border-light);">
             No hay trenes con plazas libres registradas en este corredor en las fechas del radar. Prueba con el buscador directo para cualquier otra fecha.
           </div>
         `;
         return;
       }
 
-      radarGrid.innerHTML = filtered.map(t => `
-        <div class="radar-card">
-          <div class="card-top">
-            <span class="route-pill">${t.corridor}</span>
-            <span class="verified-pill">
-              <span class="pulse-dot"></span>
-              <span>Hace ${t.checkedMinutesAgo || 5}m</span>
-            </span>
-          </div>
+      // Group by date
+      const grouped = {};
+      filtered.forEach((t) => {
+        const d = t.date;
+        if (!grouped[d]) {
+          grouped[d] = {
+            date: d,
+            trains: []
+          };
+        }
+        grouped[d].trains.push(t);
+      });
 
-          <div class="card-body">
-            <div class="card-date">${t.displayDate || t.date}</div>
-            <div class="card-times">
-              <span class="time-large">${t.departure}</span>
-              <span class="time-arrow">➔</span>
-              <span class="time-large">${t.arrival}</span>
-              <span class="card-duration">${t.duration}</span>
-            </div>
+      // Sort dates chronologically
+      const sortedDates = Object.keys(grouped).sort();
 
-            <div class="card-train-details">
-              <span class="train-badge">${t.productName} ${t.trainCode}</span>
-              <span>·</span>
-              <span>${t.coach || 'Coche 7'}</span>
-            </div>
+      radarGrid.innerHTML = sortedDates.map(dateKey => {
+        const group = grouped[dateKey];
+        const dateInfo = formatSpanishDate(dateKey);
+        const trainCount = group.trains.length;
 
-            <div class="card-pricing">
-              <div>
-                <span class="price-main">${t.price ? t.price.toFixed(2) + ' €' : 'Tarifa Elige'}</span>
-                <span class="price-addon">(+40 € perro)</span>
+        return `
+          <div class="radar-day-card">
+            <!-- 1. LA FECHA: Lo más importante -->
+            <div class="day-header">
+              <div class="day-date-group">
+                <div class="day-calendar-badge">
+                  <span class="day-cal-month">${dateInfo.monthShort}</span>
+                  <span class="day-cal-num">${dateInfo.dayNum}</span>
+                </div>
+                <div>
+                  <div class="day-title-text">${dateInfo.fullDate}</div>
+                  <div class="day-subtitle-text">Plazas caninas confirmadas en Coche 7</div>
+                </div>
+              </div>
+              <div class="day-count-badge">
+                ${trainCount} tren${trainCount > 1 ? 'es' : ''} con plaza
               </div>
             </div>
-          </div>
 
-          <div class="card-footer">
-            <div class="avail-badge">
-              <span>●</span>
-              <span>${t.availableSpots || 2} plaza${(t.availableSpots || 2) > 1 ? 's' : ''} libre${(t.availableSpots || 2) > 1 ? 's' : ''}</span>
+            <!-- Lista de trenes del día -->
+            <div class="day-slots-list">
+              ${group.trains.map(t => {
+                const globalIdx = allRadarTrains.indexOf(t);
+                return `
+                  <div class="radar-slot-row" onclick="openTrainModal(${globalIdx})">
+                    <!-- 2. LA HORA: Segundo más importante -->
+                    <div class="slot-time">
+                      <span class="slot-time-large">${t.departure}</span>
+                      <span class="slot-time-arr">➔ ${t.arrival}</span>
+                    </div>
+
+                    <!-- Ruta -->
+                    <div class="slot-route">
+                      <span class="slot-corridor-badge">${t.corridor}</span>
+                    </div>
+
+                    <!-- 3. PLAZAS DISPONIBLES DE PERRO -->
+                    <div>
+                      <div class="slot-spots-badge">
+                        <span>●</span>
+                        <span>${t.availableSpots || 2} plaza${(t.availableSpots || 2) > 1 ? 's' : ''} libre${(t.availableSpots || 2) > 1 ? 's' : ''}</span>
+                      </div>
+                    </div>
+
+                    <!-- Botón ver detalles viaje -->
+                    <div>
+                      <span class="slot-action-prompt">Ver viaje ➔</span>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
             </div>
-
-            <button class="btn-card" onclick="selectRadarTrain('${t.originCode}', '${t.originName}', '${t.destinationCode}', '${t.destinationName}', '${t.date}')">
-              <span>Buscar este tren</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
+
+    // ── Train Detail Modal Logic ──────────────────────────────────────
+    let selectedModalTrain = null;
+
+    window.openTrainModal = function(trainIndex) {
+      const train = allRadarTrains[trainIndex];
+      if (!train) return;
+      selectedModalTrain = train;
+
+      const dateInfo = formatSpanishDate(train.date);
+      document.getElementById('modalTitle').textContent = train.corridor;
+      document.getElementById('modalDate').textContent = `${dateInfo.fullDate} (${train.date})`;
+      document.getElementById('modalTimes').textContent = `${train.departure} ➔ ${train.arrival} (Duración: ${train.duration})`;
+      document.getElementById('modalTrain').textContent = `${train.productName} ${train.trainCode}`;
+      document.getElementById('modalCoach').textContent = train.coach || 'Coche 7 · Elige Estándar (H1/H2)';
+      document.getElementById('modalSpotsText').textContent = `${train.availableSpots || 2} plaza${(train.availableSpots || 2) > 1 ? 's' : ''} para perro grande (10 a 40 kg)`;
+
+      const basePrice = train.price || 48.5;
+      const dogPrice = train.dogAddonPrice || 40.0;
+      const totalPrice = (basePrice + dogPrice).toFixed(2);
+
+      document.getElementById('modalPriceBreakdown').textContent = `Billete viajero ${basePrice.toFixed(2)} € + Suplemento perro ${dogPrice.toFixed(2)} €`;
+      document.getElementById('modalTotalPrice').textContent = `${totalPrice} €`;
+      document.getElementById('modalRenfeLink').href = train.bookingUrl || 'https://www.renfe.com/es/es';
+
+      const modal = document.getElementById('trainDetailModal');
+      if (typeof modal.showModal === 'function') {
+        modal.showModal();
+      } else {
+        modal.style.display = 'block';
+      }
+    };
+
+    window.closeTrainModal = function() {
+      const modal = document.getElementById('trainDetailModal');
+      if (typeof modal.close === 'function') {
+        modal.close();
+      } else {
+        modal.style.display = 'none';
+      }
+    };
+
+    document.getElementById('modalCloseBtn').addEventListener('click', closeTrainModal);
+
+    // Click outside backdrop to close
+    document.getElementById('trainDetailModal').addEventListener('click', (e) => {
+      const dialog = document.getElementById('trainDetailModal');
+      if (e.target === dialog) {
+        closeTrainModal();
+      }
+    });
+
+    document.getElementById('modalSelectBtn').addEventListener('click', () => {
+      if (!selectedModalTrain) return;
+      closeTrainModal();
+      selectRadarTrain(
+        selectedModalTrain.originCode,
+        selectedModalTrain.originName,
+        selectedModalTrain.destinationCode,
+        selectedModalTrain.destinationName,
+        selectedModalTrain.date
+      );
+    });
 
     // Corridor Tab Clicks
     corridorTabs.querySelectorAll('.filter-tab').forEach(tab => {
