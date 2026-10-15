@@ -635,6 +635,25 @@
       color: var(--avail-green-text);
       font-weight: 700;
       font-size: 14px;
+      transition: all 0.15s ease;
+    }
+    .modal-spots-banner.sold {
+      background: var(--sold-red-bg);
+      border-color: var(--sold-red-border);
+      color: var(--sold-red-text);
+    }
+    .modal-spots-banner.sold .pulse-dot {
+      background: var(--sold-red-dot);
+      box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+    .modal-spots-banner.none {
+      background: var(--neutral-grey-bg);
+      border-color: var(--neutral-grey-border);
+      color: var(--neutral-grey-text);
+    }
+    .modal-spots-banner.none .pulse-dot {
+      background: #94A3B8;
+      box-shadow: none;
     }
     .modal-section-box {
       background: var(--bg-surface);
@@ -924,6 +943,7 @@
       box-shadow: 0 2px 10px rgba(222, 89, 61, 0.05);
       position: relative;
       overflow: hidden;
+      scroll-margin: 40px 0;
     }
 
     .loading-visual {
@@ -1081,55 +1101,75 @@
     .results-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .result-row {
-      background: #FFFFFF;
+      background: var(--bg-surface);
       border: 1.5px solid var(--border-light);
       border-radius: var(--radius-md);
-      padding: 20px 24px;
+      padding: 16px 20px;
       display: grid;
-      grid-template-columns: 150px 200px 180px 1fr auto;
+      grid-template-columns: 180px 110px 1fr auto;
       align-items: center;
       gap: 16px;
+      cursor: pointer;
       box-shadow: var(--shadow-subtle);
-      transition: border-color 0.15s ease, transform 0.15s ease;
+      transition: all 0.15s ease;
     }
     .result-row:hover {
-      border-color: var(--border-medium);
-      transform: translateY(-1px);
+      background: #FFFFFF;
+      border-color: var(--border-strong);
+      transform: translateX(4px);
+      box-shadow: 0 4px 14px rgba(36, 26, 23, 0.07);
+    }
+    .result-row:hover .slot-action-prompt {
+      background: #DE593D;
+      color: #FFFFFF;
+      border-color: #DE593D;
     }
 
-    .result-train {
-      font-weight: 800;
-      color: var(--text-main);
-      font-size: 17px;
+    .slot-train-type {
+      display: flex;
+      align-items: center;
     }
-    .result-train-type {
+
+    .train-product-badge {
       font-size: 13px;
-      color: var(--text-tertiary);
-      font-weight: 500;
-    }
-
-    .result-times {
-      font-size: 19px;
       font-weight: 800;
+      letter-spacing: 0.02em;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #FFFFFF;
       color: var(--text-main);
+      border: 1px solid var(--border-medium);
     }
-    .result-duration {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      font-weight: 600;
+    .train-product-badge.badge-ave {
+      background: #FFF7F4;
+      color: #9C2E19;
+      border-color: #F8D1C7;
+    }
+    .train-product-badge.badge-avlo {
+      background: #F3F4F6;
+      color: #4B5563;
+      border-color: #E5E7EB;
+    }
+    .train-product-badge.badge-alvia {
+      background: #EFF6FF;
+      color: #1E40AF;
+      border-color: #DBEAFE;
     }
 
     .badge-available {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: var(--radius-pill);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       background: var(--avail-green-bg);
       color: var(--avail-green-text);
@@ -1141,9 +1181,9 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: var(--radius-pill);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       background: var(--sold-red-bg);
       color: var(--sold-red-text);
@@ -1155,9 +1195,9 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: var(--radius-pill);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
       background: var(--neutral-grey-bg);
       color: var(--neutral-grey-text);
@@ -1703,13 +1743,13 @@
       <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Cerrar ventana">✕</button>
       
       <div class="modal-header">
-        <div class="modal-tag">Plaza Confirmada · Renfe AVE</div>
+        <div class="modal-tag" id="modalTag">Plaza Confirmada · Renfe AVE</div>
         <h3 class="modal-title" id="modalTitle">Madrid ➔ Sevilla</h3>
         <div class="modal-route" id="modalDate">Miércoles, 28 de Octubre de 2026</div>
       </div>
 
       <div class="modal-spots-banner" id="modalSpotsBanner">
-        <span class="pulse-dot"></span>
+        <span class="pulse-dot" id="modalPulseDot"></span>
         <span id="modalSpotsText">2 plazas para perro grande (10-40 kg)</span>
       </div>
 
@@ -1728,7 +1768,7 @@
         </div>
         <div class="modal-info-row">
           <span class="modal-info-label">Política de viaje:</span>
-          <span class="modal-info-value">Kit especial Renfe (funda + correa)</span>
+          <span class="modal-info-value" id="modalPolicy">Kit especial Renfe (funda + correa)</span>
         </div>
 
         <div class="modal-price-box">
@@ -1790,15 +1830,18 @@
     dateInput.value = getFutureDate(14, 3);
     dateInput.min = new Date().toISOString().split('T')[0];
 
-    // Shortcuts
+    // Shortcuts (Suggestions)
     document.getElementById('shortcutTue2w').addEventListener('click', () => {
       dateInput.value = getFutureDate(12, 2);
+      triggerSearch();
     });
     document.getElementById('shortcutWed2w').addEventListener('click', () => {
       dateInput.value = getFutureDate(14, 3);
+      triggerSearch();
     });
     document.getElementById('shortcutWed3w').addEventListener('click', () => {
       dateInput.value = getFutureDate(21, 3);
+      triggerSearch();
     });
 
     // ── Fetch Radar Pre-Search Feed ───────────────────────────────────
@@ -2037,26 +2080,91 @@
     // ── Train Detail Modal Logic ──────────────────────────────────────
     let selectedModalTrain = null;
 
-    window.openTrainModal = function(trainIndex) {
-      const train = allRadarTrains[trainIndex];
+    function showTrainDetails(train, { isFromSearch = false } = {}) {
       if (!train) return;
       selectedModalTrain = train;
 
-      const dateInfo = formatSpanishDate(train.date);
-      document.getElementById('modalTitle').textContent = train.corridor;
-      document.getElementById('modalDate').textContent = `${dateInfo.fullDate} (${train.date})`;
-      document.getElementById('modalTimes').textContent = `${train.departure} ➔ ${train.arrival} (Duración: ${train.duration})`;
+      const dateStr = train.date || dateInput.value;
+      const dateInfo = formatSpanishDate(dateStr);
+      const origin = train.originName || originInput.value;
+      const dest = train.destinationName || destInput.value;
+      const corridorTitle = train.corridor || `${origin} ➔ ${dest}`;
+
+      const isAvail = train.largeDogAvailable === 'available';
+      const isSold = train.largeDogAvailable === 'sold_out';
+      const isNone = train.largeDogAvailable === 'not_supported';
+
+      // Header Tag
+      const modalTag = document.getElementById('modalTag');
+      if (modalTag) {
+        if (isAvail) modalTag.textContent = `Plaza Confirmada · Renfe ${train.productName || 'AVE'}`;
+        else if (isSold) modalTag.textContent = `Plazas Agotadas · Renfe ${train.productName || 'AVE'}`;
+        else modalTag.textContent = `No Compatible · Renfe ${train.productName || 'AVLO'}`;
+      }
+
+      document.getElementById('modalTitle').textContent = corridorTitle;
+      document.getElementById('modalDate').textContent = `${dateInfo.fullDate} (${dateStr})`;
+      document.getElementById('modalTimes').textContent = `${train.departure} ➔ ${train.arrival} ${train.duration ? '(Duración: ' + train.duration + ')' : ''}`;
       document.getElementById('modalTrain').textContent = `${train.productName} ${train.trainCode}`;
-      document.getElementById('modalCoach').textContent = train.coach || 'Coche 7 · Elige Estándar (H1/H2)';
-      document.getElementById('modalSpotsText').textContent = `${train.availableSpots || 2} plaza${(train.availableSpots || 2) > 1 ? 's' : ''} para perro grande (10 a 40 kg)`;
 
-      const basePrice = train.price || 48.5;
+      // Spots banner & Coach
+      const spotsBanner = document.getElementById('modalSpotsBanner');
+      const spotsText = document.getElementById('modalSpotsText');
+      const coachEl = document.getElementById('modalCoach');
+      const policyEl = document.getElementById('modalPolicy');
+
+      spotsBanner.className = 'modal-spots-banner';
+      if (isAvail) {
+        spotsBanner.classList.add('avail');
+        const count = train.availableSpots || 2;
+        spotsText.textContent = `${count} plaza${count > 1 ? 's' : ''} para perro grande (10 a 40 kg) disponible${count > 1 ? 's' : ''}`;
+        coachEl.textContent = train.coach || 'Coche 7 · Elige Estándar (H1/H2)';
+        if (policyEl) policyEl.textContent = 'Kit especial Renfe (funda + correa)';
+      } else if (isSold) {
+        spotsBanner.classList.add('sold');
+        spotsText.textContent = 'Plazas para perro grande (10-40 kg) agotadas en este tren';
+        coachEl.textContent = 'Coche 7 (Plazas caninas agotadas)';
+        if (policyEl) policyEl.textContent = 'Solo disponible si se produce alguna cancelación previa';
+      } else {
+        spotsBanner.classList.add('none');
+        spotsText.textContent = `Los convoyes ${train.productName || 'AVLO'} no admiten perros de 10 a 40 kg`;
+        coachEl.textContent = 'Sin coche adaptado para perros grandes';
+        if (policyEl) policyEl.textContent = 'En AVLO solo viajan perros <10 kg en transportín';
+      }
+
+      // Pricing
+      const basePrice = train.price || 0;
       const dogPrice = train.dogAddonPrice || 40.0;
-      const totalPrice = (basePrice + dogPrice).toFixed(2);
+      if (basePrice > 0) {
+        if (isAvail) {
+          document.getElementById('modalPriceBreakdown').textContent = `Billete viajero ${basePrice.toFixed(2)} € + Suplemento perro ${dogPrice.toFixed(2)} €`;
+          document.getElementById('modalTotalPrice').textContent = `${(basePrice + dogPrice).toFixed(2)} €`;
+        } else {
+          document.getElementById('modalPriceBreakdown').textContent = `Billete viajero estándar ${basePrice.toFixed(2)} €`;
+          document.getElementById('modalTotalPrice').textContent = `${basePrice.toFixed(2)} €`;
+        }
+      } else {
+        document.getElementById('modalPriceBreakdown').textContent = 'Precio sujeto a la tarifa Renfe seleccionada';
+        document.getElementById('modalTotalPrice').textContent = isAvail ? '+40 € perro' : '-';
+      }
 
-      document.getElementById('modalPriceBreakdown').textContent = `Billete viajero ${basePrice.toFixed(2)} € + Suplemento perro ${dogPrice.toFixed(2)} €`;
-      document.getElementById('modalTotalPrice').textContent = `${totalPrice} €`;
-      document.getElementById('modalRenfeLink').href = train.bookingUrl || 'https://www.renfe.com/es/es';
+      const renfeLink = document.getElementById('modalRenfeLink');
+      renfeLink.href = train.bookingUrl || 'https://www.renfe.com/es/es';
+
+      const selectBtn = document.getElementById('modalSelectBtn');
+      if (isFromSearch) {
+        selectBtn.style.display = 'none';
+        renfeLink.style.display = 'inline-flex';
+        renfeLink.className = isAvail ? 'btn-search' : 'modal-btn-renfe';
+        renfeLink.querySelector('span').textContent = isAvail ? 'Reservar en Renfe.com' : 'Ver tren en Renfe.com';
+      } else {
+        selectBtn.style.display = 'inline-flex';
+        selectBtn.className = 'btn-search';
+        selectBtn.querySelector('span').textContent = 'Buscar este tren';
+        renfeLink.style.display = 'inline-flex';
+        renfeLink.className = 'modal-btn-renfe';
+        renfeLink.querySelector('span').textContent = 'Reservar en Renfe';
+      }
 
       const modal = document.getElementById('trainDetailModal');
       if (typeof modal.showModal === 'function') {
@@ -2064,6 +2172,12 @@
       } else {
         modal.style.display = 'block';
       }
+    }
+
+    window.openTrainModal = function(trainIndex) {
+      const train = allRadarTrains[trainIndex];
+      if (!train) return;
+      showTrainDetails(train, { isFromSearch: false });
     };
 
     window.closeTrainModal = function() {
@@ -2115,7 +2229,6 @@
       destInput.dataset.code = destCode;
       dateInput.value = date;
 
-      document.getElementById('searchSection').scrollIntoView({ behavior: 'smooth' });
       triggerSearch();
     };
 
@@ -2197,6 +2310,16 @@
       progressDetail.textContent = `Fecha: ${date} · Comprobando disponibilidad de Coche 7 en Renfe...`;
       searchBtn.disabled = true;
 
+      // Blur active input to prevent mobile soft keyboard viewport displacement
+      if (document.activeElement && typeof document.activeElement.blur === 'function') {
+        document.activeElement.blur();
+      }
+
+      // Smoothly center the animated train progress box in mobile & desktop viewport
+      setTimeout(() => {
+        progressBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 60);
+
       const url = `/api/search?origin=${encodeURIComponent(originCode)}&destination=${encodeURIComponent(destCode)}&date=${encodeURIComponent(date)}`;
       currentEventSource = new EventSource(url);
 
@@ -2252,8 +2375,8 @@
       let badgeHtml = '';
       if (isAvail) {
         badgeHtml = `
-          <div class="badge-available">
-            <span>●</span>
+          <div class="slot-spots-badge">
+            <span class="pulse-dot" style="width:7px;height:7px;"></span>
             <span>Plaza disponible</span>
           </div>
         `;
@@ -2273,45 +2396,50 @@
         `;
       }
 
+      const prodName = (train.productName || 'AVE').toUpperCase();
+      let prodClass = 'badge-ave';
+      if (prodName.includes('AVLO')) prodClass = 'badge-avlo';
+      else if (prodName.includes('ALVIA')) prodClass = 'badge-alvia';
+
       const row = document.createElement('div');
       row.className = 'result-row';
+      row.setAttribute('role', 'button');
+      row.setAttribute('tabindex', '0');
+      row.setAttribute('title', 'Toca para ver todos los detalles del viaje');
       row.innerHTML = `
-        <div>
-          <div class="result-train">${train.productName} ${train.trainCode}</div>
-          <div class="result-train-type">${train.fareName || 'Elige Estándar'}</div>
+        <!-- 1. LA HORA -->
+        <div class="slot-time">
+          <span class="slot-time-large">${train.departure}</span>
+          <span class="slot-time-arr">➔ ${train.arrival}</span>
         </div>
 
-        <div>
-          <div class="result-times">${train.departure} ➔ ${train.arrival}</div>
-          <div class="result-duration">Duración: ${train.duration}</div>
+        <!-- 2. TIPO DE TREN (AVLO o AVE) -->
+        <div class="slot-train-type">
+          <span class="train-product-badge ${prodClass}">${train.productName || 'AVE'}</span>
         </div>
 
+        <!-- 3. PLAZAS DISPONIBLES DE PERRO -->
         <div>
           ${badgeHtml}
         </div>
 
-        <div style="text-align: right;">
-          <div style="font-weight: 800; color: var(--text-main); font-size: 18px;">
-            ${train.price ? train.price.toFixed(2) + ' €' : '-'}
-          </div>
-          <div style="font-size: 12px; font-weight: 600; color: var(--text-tertiary);">
-            ${isAvail ? '+40 € suplemento' : ''}
-          </div>
-        </div>
-
+        <!-- Botón Ver viaje ➔ -->
         <div>
-          ${isAvail ? `
-            <a href="${train.bookingUrl || 'https://www.renfe.com/es/es'}" target="_blank" rel="noopener" class="btn-card">
-              <span>Reservar</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          ` : `
-            <button class="btn-card" style="background: var(--bg-surface); color: var(--text-light); border: 1px solid var(--border-light); cursor: not-allowed;" disabled>
-              Agotado
-            </button>
-          `}
+          <span class="slot-action-prompt">Ver viaje ➔</span>
         </div>
       `;
+
+      row.addEventListener('click', () => {
+        showTrainDetails(train, { isFromSearch: true });
+      });
+
+      row.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          showTrainDetails(train, { isFromSearch: true });
+        }
+      });
+
       resultsList.appendChild(row);
     }
 
