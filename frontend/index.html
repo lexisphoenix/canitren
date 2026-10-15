@@ -7,8 +7,9 @@
   <meta name="theme-color" content="#FFFFFF">
   <title>Patas al Tren · Plazas para perros grandes en Renfe AVE</title>
   
-  <!-- Minimalist Cute Paw Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22 fill=%22%230F172A%22><path d=%22M16 14.5c-4.2 0-7 3.2-7 6.5 0 2.8 2.2 4.5 4.8 4.5 1.5 0 2.2-.8 3.2-.8s1.7.8 3.2.8c2.6 0 4.8-1.7 4.8-4.5 0-3.3-2.8-6.5-7-6.5z%22/><ellipse cx=%228.5%22 cy=%2211.5%22 rx=%222.5%22 ry=%223.5%22 transform=%22rotate(-18 8.5 11.5)%22/><ellipse cx=%2213.2%22 cy=%227.5%22 rx=%222.5%22 ry=%223.8%22 transform=%22rotate(-6 13.2 7.5)%22/><ellipse cx=%2218.8%22 cy=%227.5%22 rx=%222.5%22 ry=%223.8%22 transform=%22rotate(6 18.8 7.5)%22/><ellipse cx=%2223.5%22 cy=%2211.5%22 rx=%222.5%22 ry=%223.5%22 transform=%22rotate(18 23.5 11.5)%22/></svg>">
+  <!-- App Favicons -->
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -155,16 +156,17 @@
       color: var(--text-main);
     }
 
-    /* Paw Logo Icon (Slightly larger, cute and stylish) */
+    /* Brand Logo Icon */
     .brand-logo-icon {
-      width: 38px;
-      height: 38px;
-      color: var(--accent-black);
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
       flex-shrink: 0;
       transition: transform 0.2s ease;
+      display: block;
     }
     .brand-link:hover .brand-logo-icon {
-      transform: scale(1.06) rotate(-4deg);
+      transform: scale(1.08) rotate(-4deg);
     }
 
     .brand-text {
@@ -1408,16 +1410,8 @@
   <header class="nav-header">
     <div class="container nav-inner">
       <a href="#" class="brand-link">
-        <!-- Minimalist Cute Paw Icon (Enlarged) -->
-        <svg class="brand-logo-icon" viewBox="0 0 32 32" fill="currentColor">
-          <!-- Main central pad -->
-          <path d="M16 14.5c-4.2 0-7 3.2-7 6.5 0 2.8 2.2 4.5 4.8 4.5 1.5 0 2.2-.8 3.2-.8s1.7.8 3.2.8c2.6 0 4.8-1.7 4.8-4.5 0-3.3-2.8-6.5-7-6.5z"/>
-          <!-- 4 Toe pads -->
-          <ellipse cx="8.5" cy="11.5" rx="2.5" ry="3.5" transform="rotate(-18 8.5 11.5)"/>
-          <ellipse cx="13.2" cy="7.5" rx="2.5" ry="3.8" transform="rotate(-6 13.2 7.5)"/>
-          <ellipse cx="18.8" cy="7.5" rx="2.5" ry="3.8" transform="rotate(6 18.8 7.5)"/>
-          <ellipse cx="23.5" cy="11.5" rx="2.5" ry="3.5" transform="rotate(18 23.5 11.5)"/>
-        </svg>
+        <!-- Logo Icon: Magnifying Glass with Paw & Checkmark -->
+        <img class="brand-logo-icon" src="/assets/logo-icon.png" alt="Patas al Tren" width="44" height="44">
 
         <div class="brand-text">
           <div class="brand-title">Patas al Tren<span class="dot">.</span></div>

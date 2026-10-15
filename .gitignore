@@ -12,8 +12,9 @@ node_modules/
 
 # Temporary / Screenshots
 /tmp/
-*.png
 *.html.bak
+!public/assets/*.png
+!frontend/assets/*.png
 
 # OS
 .DS_Store
